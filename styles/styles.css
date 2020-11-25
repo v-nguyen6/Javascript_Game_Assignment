@@ -4,22 +4,39 @@
     title: twd - javascript game - css
 */
 
+/*  
+    note from mina: this is supposed to be like a retro/vaporwavey color scheme
+    but delete it if it's ugly lmao 
+*/
+
 /* main selectors */
 
 body {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Arial, Helvetica, sans-serif;
     background-color: rgb(40,40,40);
     color: white;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    text-transform: lowercase;
 }
 
 h1 {
     text-align: center;
     padding-top: 20px;
+    font-size: 3em;
 }
 
 h3, p {
-    padding-bottom: 0;
+    padding: 0;
+    margin: 0;
     color: rgb(211,211,211);
+    text-align: center;
+}
+
+h3 {
+    margin-top: 20px;
+    color: #00B25A;
 }
 
 footer {
@@ -33,20 +50,32 @@ footer {
     text-align: center;
 }
 
+a,
+a:visited,
+a:active {
+    text-decoration: none;
+    color: #FF007F;
+}
+
+a:hover {
+    color: #FF73B9;
+}
+
 /* .class selectors */
 .wrapper {
     padding-left: 20px;
     padding-right: 20px;
-
 }
 .game {
-    background-color: rgb(64,64,64);
+    background-color: black;
     height: 500px;
     width: 700px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px;
+    border: 2px solid #006CD9;
 }
+
 
 /* #id selectors */
 
