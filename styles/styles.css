@@ -39,6 +39,14 @@ footer {
     padding-right: 20px;
 
 }
+.game {
+    background-color: rgb(64,64,64);
+    height: 500px;
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
 
 /* #id selectors */
 
