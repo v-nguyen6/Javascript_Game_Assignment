@@ -5,9 +5,9 @@
 /*      javascript game
 
     basics: 
-        - character on the bottom, controlled by directional keys
+        - character on the bottom, controlled by left and right directional keys
         - enemies that are going from the top of the screen to the bottom
-            - when enemies run into the enemy, the game is over
+            - when enemies run into the user, the game is over (show "game over" screen)
 
     - goal:   
             - avoid enemies and collect coins
