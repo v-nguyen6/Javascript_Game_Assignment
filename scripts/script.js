@@ -22,3 +22,10 @@
         - have the game end when it runs into the enemy
     
   */
+
+  /*
+
+    questions to ask michael lol:
+        - does the game need to be playable on mobile?
+
+  */
