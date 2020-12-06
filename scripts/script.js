@@ -18,10 +18,11 @@
         - last as long as you can (like flappy bird?)
 
     user interactions:
-        - collect meat that are also falling 
-                => counts how much meat you run into?
         - avoid enemies with directional keys
         - have the game end when dinosaur is in contact with the meteor
+
+        - collect meat that are also falling 
+                => counts how much meat you run into?
 
     game progression
         - [game start]
@@ -100,4 +101,17 @@
         1. 
 */
 
- 
+
+
+
+
+// --------------------------------------------------------------------------------------
+// [enemies => meteors]
+/*
+    rules:
+        1. move automatically top to bottom
+        2. falls faster with time
+        3. when meteors come in contact with dinosaur, game over
+ */
+
+
