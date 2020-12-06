@@ -56,31 +56,31 @@
 */      
 
 function loadImages() {
-    
+
     let imA = document.createElement("img")
     imA.id = "dinosaur_1"
     imA.src = "images/dinosaur_1.png"
-    document.getElementById("top").appendChild(imA)
+    document.getElementById("game-container").appendChild(dinosaur_1)
 
     let imB = document.createElement("img")
     imB.id = "dinosaur_2"
     imB.src = "images/dinosaur_2.png"
-    document.getElementById("top").appendChild(imB)
+    document.getElementById("game-container").appendChild(dinosaur_2)
 
     let imC = document.createElement("img")
     imC.id = "dinosaur_3"
     imC.src = "images/dinosaur_3.png"
-    document.getElementById("top").appendChild(imC)
+    document.getElementById("game-container").appendChild(dinosaur_3)
 
     let imD = document.createElement("img")
     imD.id = "dinosaur_4"
     imD.src = "images/dinosaur_4.png"
-    document.getElementById("top").appendChild(imD)
+    document.getElementById("game-container").appendChild(dinosaur_4)
 
     let imE = document.createElement("img")
     imE.id = "dinosaur_5"
     imE.src = "images/dinosaur_5.png"
-    document.getElementById("top").appendChild(imE)
+    document.getElementById("game-container").appendChild(dinosaur_5)
 }
 
 /*     var allImages = document.getElementsByTagName("img")
