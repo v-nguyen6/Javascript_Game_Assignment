@@ -36,7 +36,7 @@ h3, p {
 
 h3 {
     margin-top: 20px;
-    color: #00B25A;
+    color: #FF73B9;
 }
 
 footer {
@@ -54,11 +54,11 @@ a,
 a:visited,
 a:active {
     text-decoration: none;
-    color: #FF007F;
+    color: #FF73B9;
 }
 
 a:hover {
-    color: #FF73B9;
+    color: #FF007F;
 }
 
 /* .class selectors */
@@ -73,7 +73,7 @@ a:hover {
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px;
-    border: 2px solid #006CD9;
+    border: 2px solid #FF73B9;
 }
 
 
