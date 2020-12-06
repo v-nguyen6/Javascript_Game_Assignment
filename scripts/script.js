@@ -55,6 +55,43 @@
         2. when user selects dinosaur, it changes the img for the rest of the game
 */      
 
+function loadImages() {
+    
+    let imA = document.createElement("img")
+    imA.id = "dinosaur_1"
+    imA.src = "images/dinosaur_1.png"
+    document.getElementById("top").appendChild(imA)
+
+    let imB = document.createElement("img")
+    imB.id = "dinosaur_2"
+    imB.src = "images/dinosaur_2.png"
+    document.getElementById("top").appendChild(imB)
+
+    let imC = document.createElement("img")
+    imC.id = "dinosaur_3"
+    imC.src = "images/dinosaur_3.png"
+    document.getElementById("top").appendChild(imC)
+
+    let imD = document.createElement("img")
+    imD.id = "dinosaur_4"
+    imD.src = "images/dinosaur_4.png"
+    document.getElementById("top").appendChild(imD)
+
+    let imE = document.createElement("img")
+    imE.id = "dinosaur_5"
+    imE.src = "images/dinosaur_5.png"
+    document.getElementById("top").appendChild(imE)
+}
+
+/*     var allImages = document.getElementsByTagName("img")
+
+    for(let i = 0; i < allImages.length; i++)
+    {
+        allImages[i].onclick = move
+    }
+ */
+}
+
 
 
 
