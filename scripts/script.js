@@ -47,7 +47,7 @@
 // ------------------------------- the actual code lol ------------------------------- 
 
 
-// [character selection]
+// [character selection] => mina working on this rn
 // 
 /*
     rules:
@@ -60,7 +60,7 @@
 
 
 // --------------------------------------------------------------------------------------
-// [user => dinosaurs]
+// [user => dinosaurs] 
 // 
 /*
     rules:
