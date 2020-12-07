@@ -105,6 +105,7 @@ for (i = 0; i < images.length; i++) {
     images[i].onmouseover = function () {
         // change character preview image
         document.getElementById('preview').src = this.src;
+        //document.getElementById('gallery').style.visibility='hidden'; 
     }
 }
 
