@@ -73,38 +73,29 @@ a:hover {
     margin-right: auto;
     margin-top: 50px;
     border: 2px solid #FF73B9;
+    position: relative;
 }
 
 /* -------------------------------------------------------------------------------------- */
 
 /* Main Character */
-/*
-.main-character {
-    position: absolute;
-    
+#player {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 68px; 
+    height: 68px
 }
-*/
+
+
 #player img {
+    position: absolute;
     width: 68px;
     height: 68px;
-    position: relative;
     top: 450px;
+    left: 300px;
 }
 
-#player2 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100px;
-    height: 100px;
-}
-
-.circle{
-    height: 100px;
-    width: 100px;
-    border-radius: 50%;
-    background-color: green;
-}
 
 
 /* game images */
@@ -115,8 +106,11 @@ img {
 /* character selection */
 
 .gallery {
+    position: absolute;
     text-align: center;
     padding: 10px 10px;
+    left: 170px;
+    top: 70px;
 }
 
 .thumbnails img {

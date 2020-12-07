@@ -52,7 +52,7 @@
     rules:
         1. move left and right on screen
             only within .game-container
-*/
+
     
 var r = document.getElementById("player");
 
@@ -70,7 +70,7 @@ function move(e) {
         left -= 2;
         player.style.left = (parseInt(left) + left) + "px";
     }
-    /*
+    
     // Down Arrow
     if(e.keyCode == 40) {
         top += 2;
@@ -81,11 +81,14 @@ function move(e) {
         top += 2;
         player.style.top = (parseInt(top) + top) + "px";
     }
-    */
+    
 }
+
 
 // Used to call the move function whenever a key is pressed
 document.onkeydown = move;
+
+*/
 
 
 // --------------------------------------------------------------------------------------

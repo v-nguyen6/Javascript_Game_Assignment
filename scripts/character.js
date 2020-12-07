@@ -4,13 +4,14 @@
 
 // Player Movement Javascript
  /*----------------------------------  First Attempt */
+ /*
 
  document.onkeydown = detectKey;
  function detectKey(e) {
      var posLeft = document.getElementById('player').offsetLeft;
      var posTop = document.getElementById('player').offsetTop;
      e = e || window.event;
-     /*
+     
      if (e.keyCode == '38') {
          // up arrow
          document.getElementById('player').style.marginTop  = (posTop-10)+"px";
@@ -19,20 +20,20 @@
          // down arrow
          document.getElementById('player').style.marginTop  = (posTop+10)+"px";
      }
-     else */
+     else 
      
     
      if (e.keyCode == '37') {
         // left arrow
-         document.getElementById('player').style.marginLeft  = (posLeft-1)+"px";
+         document.getElementById('player').style.marginLeft  = (posLeft-58)+"px";
      }
      else if (e.keyCode == '39') {
         // right arrow
-         document.getElementById('player').style.marginLeft  = (posLeft-1)+"px";
+         document.getElementById('player').style.marginLeft  = (posLeft-10)+"px";
      }
  }
 
-
+*/
 
 /*----------------------------------  Second Attempt 
 let circle = document.querySelector('.circle');
@@ -102,13 +103,21 @@ document.onkeydown = move;
 */
 
 // Fourth Attempt
-let modifier = 5;
-  window.addEventListener('keydown', (event) => {
-    const { style } = player2;
+let modifier = 6;
+
+window.addEventListener('keydown', (event) => {
+
+    const { style } = player;
+
     switch(event.key) {
-      case 'ArrowUp': style.top = `${parseInt(style.top) - modifier}px`; break;
-      case 'ArrowDown': style.top = `${parseInt(style.top) + modifier}px`; break;
-      case 'ArrowLeft': style.left = `${parseInt(style.left) - modifier}px`; break;
-      case 'ArrowRight': style.left = `${parseInt(style.left) + modifier}px`; break;
+
+        case 'ArrowUp': style.top = `${parseInt(style.top) - modifier}px`; 
+            break;
+        case 'ArrowDown': style.top = `${parseInt(style.top) + modifier}px`; 
+            break;
+        case 'ArrowLeft': style.left = `${parseInt(style.left) - modifier}px`; 
+            break;
+        case 'ArrowRight': style.left = `${parseInt(style.left) + modifier}px`; 
+            break;
     }
-  });
+});
