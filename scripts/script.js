@@ -56,12 +56,12 @@
 */      
 
 var images = document.getElementsByClassName('char-thumbnails')[0].getElementsByTagName('img');
+
 for (i = 0; i < images.length; i++) {
     images[i].onmouseover = function () {
         document.getElementById('char-preview').src = this.src;
     }
 }
-
 
 
 // --------------------------------------------------------------------------------------
