@@ -75,6 +75,7 @@ a:hover {
     border: 2px solid #FF73B9;
 }
 
+<<<<<<< Updated upstream
 .char-gallery {
     background-color: transparent;
     text-align: center;
@@ -92,6 +93,21 @@ a:hover {
 
 /* -------------------------------------------------------------------------------------- */
 
+=======
+/* Main Character */
+.main-character {
+    /*
+    position: absolute;
+    */
+    
+}
+
+.main-character img {
+    width: 68px;
+    height: 68px;
+}
+
+>>>>>>> Stashed changes
 /* game images */
 img {
     height: 100px;

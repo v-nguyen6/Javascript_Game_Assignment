@@ -103,9 +103,26 @@ function loadImages() {
     rules:
         1. move left and right on screen
             only within .game-container
-*/      
+*/
+    let character = document.querySelector('.dino-1');
+    let moveBy = 10;
 
+    window.addEventListener('load', () => {
+        character.style.position = 'absolute';
+        character.style.left = 0;
+        character.style.top = 0;
+    });
 
+    window.addEventListener('keyup', (e) =>{
+        switch(e.key) {
+            case 'ArrowLeft':
+                character.style.left = parseInt(character.style.left) - moveBy + 'px';
+                break;
+            case 'ArrowRight':
+                character.style.left = parseInt(character.style.left) + moveBy - 'px';
+            break;
+        }
+    });
 
 
 
