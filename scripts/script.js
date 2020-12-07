@@ -46,24 +46,6 @@
   */
 // ------------------------------- the actual code lol ------------------------------- 
 
-
-// [character selection] => mina working on this rn
-// 
-/*
-    rules:
-        1. left and right to select a character, press enter to select
-        2. when user selects dinosaur, it changes the img for the rest of the game
-*/      
-
-var images = document.getElementsByClassName('thumbnails')[0].getElementsByTagName('img');
-for (i = 0; i < images.length; i++) {
-    images[i].onmouseover = function () {
-        document.getElementById('preview').src = this.src;
-    }
-}
-
-
-// --------------------------------------------------------------------------------------
 // [user => dinosaurs] 
 // 
 /*
@@ -91,6 +73,24 @@ for (i = 0; i < images.length; i++) {
         }
     });
 
+// --------------------------------------------------------------------------------------
+// [character selection] => mina working on this rn
+// 
+/*
+    rules:
+        1. left and right to select a character, press enter to select
+        2. when user selects dinosaur, it changes the img for the rest of the game
+*/      
+
+var images = document.getElementsByClassName('thumbnails')[0].getElementsByTagName('img');
+for (i = 0; i < images.length; i++) {
+    images[i].onmouseover = function () {
+        // change character preview image
+        document.getElementById('preview').src = this.src;
+        // change character for the rest of the game
+        document.getElementById('dino-1').src - this.src;
+    }
+}
 
 
 // --------------------------------------------------------------------------------------
