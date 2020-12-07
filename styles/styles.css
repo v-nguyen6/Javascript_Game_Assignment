@@ -7,7 +7,6 @@
 /* -------------------------------------------------------------------------------------- */
 
 /* main selectors */
-
 body {
     font-family: 'VT323', monospace;
     background-color: rgb(40,40,40);
@@ -80,20 +79,18 @@ a:hover {
 
 /* Main Character */
 #player {
-    position: absolute; 
-    top: 0; 
-    left: 0; 
     width: 68px; 
-    height: 68px
+    height: 68px;
+    bottom: -15px;
+   /* left: 300px; */
+    position: absolute;
 }
 
 
 #player img {
-    position: absolute;
     width: 68px;
     height: 68px;
-    top: 450px;
-    left: 300px;
+    display: block;
 }
 
 

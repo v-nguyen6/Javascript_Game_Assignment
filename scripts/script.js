@@ -89,6 +89,35 @@ function move(e) {
 document.onkeydown = move;
 
 */
+const player = document.getElementById("player");
+player.style.left = '300px';
+
+player.style.display = "none";
+
+let modifier = 6;
+
+window.addEventListener('keydown', (event) => {
+
+    /*
+    const { style } = player;
+    */
+    let x = parseInt(player.style.left);
+    
+    console.log(player);
+    
+    switch(event.key) {
+        /*
+        case 'ArrowUp': style.top = `${parseInt(style.top) - modifier}px`; 
+            break;
+        case 'ArrowDown': style.top = `${parseInt(style.top) + modifier}px`; 
+            break;
+        */
+        case 'ArrowLeft': player.style.left = `${x - modifier}px`; 
+            break;
+        case 'ArrowRight': player.style.left = `${x + modifier}px`; 
+            break;
+    }
+});
 
 
 // --------------------------------------------------------------------------------------
@@ -105,11 +134,21 @@ for (i = 0; i < images.length; i++) {
     images[i].onmouseover = function () {
         // change character preview image
         document.getElementById('preview').src = this.src;
+        player.innerHTML = `<img src="${this.src}" alt="player" >`;
     }
 }
 
+
 // change character for the rest of the game => idk how to do this yet help T_T
 //document.getElementById('dino-1').src - this.src;
+const charButton = document.getElementById("charButton")
+const gallery = document.getElementById("gallery")
+
+charButton.addEventListener('click', function(){
+gallery.style.display = "none";
+player.style.display = "block";
+
+});
 
 
 // --------------------------------------------------------------------------------------

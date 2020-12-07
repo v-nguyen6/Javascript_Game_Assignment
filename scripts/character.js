@@ -102,6 +102,7 @@ document.onkeydown = move;
 
 */
 
+/*
 // Fourth Attempt
 let modifier = 6;
 
@@ -115,10 +116,12 @@ window.addEventListener('keydown', (event) => {
             break;
         case 'ArrowDown': style.top = `${parseInt(style.top) + modifier}px`; 
             break;
-        */
+        
         case 'ArrowLeft': style.left = `${parseInt(style.left) - modifier}px`; 
             break;
         case 'ArrowRight': style.left = `${parseInt(style.left) + modifier}px`; 
             break;
     }
 });
+
+*/

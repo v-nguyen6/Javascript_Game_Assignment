@@ -13,9 +13,7 @@
     <title>don't get extinct | a javascript game</title>
     
     <link rel = "stylesheet" href = "styles/styles.css">
-    <link rel = "javascript" href = "scripts/script.js">
-    <!-- Javascript Implementation Test-->
-    <script src="/scripts/character.js"></script>
+    
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 
@@ -53,13 +51,13 @@
             <div class = "game-container" id = "game-container">
 
                 <!-- main-character -->
-                <div id="player" style="position: absolute; top: 0; left: 0; width: 68px; height: 68px;">
+                <div id="player">
                     <img src="images/dinosaur_1_white.png" alt="player">
                 </div>
             
 
                 <!-- start [character selection] -->
-                <div class="gallery">
+                <div id="gallery" class="gallery">
                     <div class="thumbnails">
                         <h4>Choose your character:</h4>
                         <img onmouseover="preview.src=img1.src" id="img1" src="images/dinosaur_1_white.png" alt="Character Option 1"/>
@@ -73,7 +71,7 @@
                         <img id="preview" src="images/dinosaur_1_white.png" alt="Chosen Character" />
                     </div>
                     <div class = "char-button-div">
-                        <button class = "char-button">Confirm Selection</button>
+                        <button id="charButton" class = "char-button">Confirm Selection</button>
                     </div>
                 </div>
                 <!-- end [character selection] -->
@@ -81,5 +79,9 @@
             </div>
     </div>
     <footer>&copy; 2020 <a href="http://mbui.bcitwebdeveloper.ca/">Mina Bui</a> and <a href="http://vnguyen.bcitwebdeveloper.ca/">Vinson Nguyen</a>. </footer>
+    
+<script src="/scripts/character.js"></script>
+<script src="/scripts/script.js"></script>
 </body>
+
 </html>
