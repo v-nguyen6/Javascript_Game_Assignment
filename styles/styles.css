@@ -122,7 +122,8 @@ img {
     border: 1px solid #00ccff;
     cursor: pointer;
 }
-.char-thumbnails img {
+.char-thumbnails img,
+.char-preview img {
     border: 1px solid transparent;
     padding: 1px;
     width: 100px;
@@ -148,6 +149,6 @@ img {
   }
   
   .char-button:hover {
-    background-color: black;
-    color: #FF73B9;
+    background-color: slategrey;
+    color: white;
   }
