@@ -87,10 +87,11 @@ for (i = 0; i < images.length; i++) {
     images[i].onmouseover = function () {
         // change character preview image
         document.getElementById('preview').src = this.src;
-        // change character for the rest of the game
-        document.getElementById('dino-1').src - this.src;
     }
 }
+
+// change character for the rest of the game => idk how to do this yet help T_T
+//document.getElementById('dino-1').src - this.src;
 
 
 // --------------------------------------------------------------------------------------
