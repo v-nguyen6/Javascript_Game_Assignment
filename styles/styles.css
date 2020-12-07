@@ -60,10 +60,6 @@ a:hover {
 
 /* -------------------------------------------------------------------------------------- */
 
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 /* .class selectors */
 .wrapper {
     padding-left: 20px;
@@ -78,6 +74,21 @@ a:hover {
     margin-top: 50px;
     border: 2px solid #FF73B9;
 }
+
+.char-gallery {
+    background-color: transparent;
+    text-align: center;
+}
+
+.char-thumbnails {
+    background-color: transparent;
+}
+
+.char-preview {
+    background-color: transparent;
+    text-align: center;
+}
+
 
 /* -------------------------------------------------------------------------------------- */
 
