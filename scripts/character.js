@@ -24,7 +24,7 @@
     
      if (e.keyCode == '37') {
         // left arrow
-         document.getElementById('player').style.marginLeft  = (posLeft-50)+"px";
+         document.getElementById('player').style.marginLeft  = (posLeft-1)+"px";
      }
      else if (e.keyCode == '39') {
         // right arrow
@@ -34,7 +34,7 @@
 
 
 
-/*----------------------------------  Second Attempt */
+/*----------------------------------  Second Attempt 
 let circle = document.querySelector('.circle');
 let moveBy = 10;
  
@@ -61,6 +61,8 @@ window.addEventListener('keyup', (e) => {
             break;
     }
 });
+
+*/
 
 // Third Attempt
 /*
