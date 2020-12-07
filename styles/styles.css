@@ -78,17 +78,27 @@ a:hover {
 /* -------------------------------------------------------------------------------------- */
 
 /* Main Character */
+/*
 .main-character {
-    /*
     position: absolute;
-    */
     
 }
-
-.player img {
+*/
+#player img {
     width: 68px;
     height: 68px;
+    position: relative;
+    top: 450px;
 }
+
+#player2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+}
+
 
 /* game images */
 img {

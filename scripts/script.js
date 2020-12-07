@@ -53,25 +53,40 @@
         1. move left and right on screen
             only within .game-container
 */
-    let character = document.querySelector('.dino-1');
-    let moveBy = 10;
+    
+var r = document.getElementById("player");
 
-    window.addEventListener('load', () => {
-        character.style.position = 'absolute';
-        character.style.left = 0;
-        character.style.top = 0;
-    });
+var left = 0;
+var top = 0;
 
-    window.addEventListener('keyup', (e) =>{
-        switch(e.key) {
-            case 'ArrowLeft':
-                character.style.left = parseInt(character.style.left) - moveBy + 'px';
-                break;
-            case 'ArrowRight':
-                character.style.left = parseInt(character.style.left) + moveBy - 'px';
-            break;
-        }
-    });
+function move(e) {
+    // Right Arrow
+    if(e.keyCode == 39) {
+        left += 2;
+        player.style.left = (parseInt(left) + left) + "px";
+    }
+    // Left Arrow
+    if(e.keyCode == 37) {
+        left -= 2;
+        player.style.left = (parseInt(left) + left) + "px";
+    }
+    /*
+    // Down Arrow
+    if(e.keyCode == 40) {
+        top += 2;
+        player.style.top = (parseInt(top) + top) + "px";
+    }
+    // Down Arrow
+    if(e.keyCode == 40) {
+        top += 2;
+        player.style.top = (parseInt(top) + top) + "px";
+    }
+    */
+}
+
+// Used to call the move function whenever a key is pressed
+document.onkeydown = move;
+
 
 // --------------------------------------------------------------------------------------
 // [character selection] => mina working on this rn
