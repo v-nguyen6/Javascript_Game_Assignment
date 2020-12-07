@@ -109,3 +109,22 @@ a:hover {
 img {
     height: 100px;
 }
+
+/* character selection */
+
+.char-thumbnails img {
+    border: 1px solid transparent;
+    height: 100px;
+    padding: 1px;
+    margin: 0 10px 10px 0;
+}
+.char-thumbnails img:hover {
+    border: 1px solid #00ccff;
+    cursor: pointer;
+}
+.char-thumbnails img {
+    border: 1px solid transparent;
+    padding: 1px;
+    width: 100px;
+    height: 100%;
+}
