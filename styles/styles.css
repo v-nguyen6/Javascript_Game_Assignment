@@ -31,7 +31,7 @@ h3, p {
     text-align: center;
 }
 
-h3 {
+h2, h3, h4, h5, h6 {
     margin-top: 20px;
     color: #FF73B9;
 }
@@ -75,21 +75,6 @@ a:hover {
     border: 2px solid #FF73B9;
 }
 
-.char-gallery {
-    background-color: transparent;
-    text-align: center;
-}
-
-.char-thumbnails {
-    background-color: transparent;
-}
-
-.char-preview {
-    background-color: transparent;
-    text-align: center;
-}
-
-
 /* -------------------------------------------------------------------------------------- */
 
 /* Main Character */
@@ -112,21 +97,26 @@ img {
 
 /* character selection */
 
-.char-thumbnails img {
+.gallery {
+    text-align: center;
+    padding: 10px 10px;
+}
+
+.thumbnails img {
     border: 1px solid transparent;
     height: 100px;
     padding: 1px;
     margin: 0 10px 10px 0;
 }
-.char-thumbnails img:hover {
+.thumbnails img:hover {
     border: 1px solid #00ccff;
     cursor: pointer;
 }
-.char-thumbnails img,
-.char-preview img {
+.thumbnails img,
+.preview img {
     border: 1px solid transparent;
     padding: 1px;
-    width: 100px;
+    width: 50px;
     height: 100%;
 }
 

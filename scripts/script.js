@@ -55,11 +55,10 @@
         2. when user selects dinosaur, it changes the img for the rest of the game
 */      
 
-var images = document.getElementsByClassName('char-thumbnails')[0].getElementsByTagName('img');
-
+var images = document.getElementsByClassName('thumbnails')[0].getElementsByTagName('img');
 for (i = 0; i < images.length; i++) {
     images[i].onmouseover = function () {
-        document.getElementById('char-preview').src = this.src;
+        document.getElementById('preview').src = this.src;
     }
 }
 
