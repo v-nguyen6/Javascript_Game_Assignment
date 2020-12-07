@@ -34,50 +34,33 @@
 
 
 
-/*----------------------------------  Second Attempt 
-<body onkeydown='getKeyAndMove(event)'></body>
-
-//init object globally
-var objImage= null;
-function init(){ 
-    objImage=document.getElementById("dino");				
-    objImage.style.position='relative';
-    objImage.style.left='0px';
-    objImage.style.top='0px';
-}
-function getKeyAndMove(e){		
-
-    var key_code=e.which||e.keyCode;
-    switch(key_code){
-        case 37: //left arrow key
-            moveLeft();
+/*----------------------------------  Second Attempt */
+let circle = document.querySelector('.circle');
+let moveBy = 10;
+ 
+window.addEventListener('load', () => {
+    circle.style.position = 'absolute';
+    circle.style.left = 0;
+    circle.style.top = 0;
+});
+ 
+ 
+window.addEventListener('keyup', (e) => {
+    switch (e.key) {
+        case 'ArrowLeft':
+            circle.style.left = parseInt(circle.style.left) - moveBy + 'px';
             break;
-        case 38: //Up arrow key
-            moveUp();
+        case 'ArrowRight':
+            circle.style.left = parseInt(circle.style.left) + moveBy + 'px';
             break;
-        case 39: //right arrow key
-            moveRight();
+        case 'ArrowUp':
+            circle.style.top = parseInt(circle.style.top) - moveBy + 'px';
             break;
-        case 40: //down arrow key
-            moveDown();
-            break;						
+        case 'ArrowDown':
+            circle.style.top = parseInt(circle.style.top) + moveBy + 'px';
+            break;
     }
-}
-function moveLeft(){
-    objImage.style.left=parseInt(objImage.style.left)-5 +'px';
-}
-function moveUp(){
-    objImage.style.top=parseInt(objImage.style.top)-5 +'px';
-}
-function moveRight(){
-    objImage.style.left=parseInt(objImage.style.left)+5 +'px';
-}
-function moveDown(){
-    objImage.style.top=parseInt(objImage.style.top)+5 +'px';
-}
-window.onload=init;
-
-*/ 
+});
 
 // Third Attempt
 /*
