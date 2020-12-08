@@ -121,15 +121,10 @@ window.addEventListener('keydown', (event) => {
 
 
 // --------------------------------------------------------------------------------------
-// [character selection] => mina working on this rn
-// 
-/*
-    rules:
-        1. left and right to select a character, press enter to select
-        2. when user selects dinosaur, it changes the img for the rest of the game
-*/      
+// [character selection]
 
 var images = document.getElementsByClassName('thumbnails')[0].getElementsByTagName('img');
+
 for (i = 0; i < images.length; i++) {
     images[i].onmouseover = function () {
         // change character preview image
@@ -138,18 +133,14 @@ for (i = 0; i < images.length; i++) {
     }
 }
 
-
-// change character for the rest of the game => idk how to do this yet help T_T
-//document.getElementById('dino-1').src - this.src;
+// close window when button is pressed
 const charButton = document.getElementById("charButton")
 const gallery = document.getElementById("gallery")
 
 charButton.addEventListener('click', function(){
-gallery.style.display = "none";
-player.style.display = "block";
-
+    gallery.style.display = "none";
+    player.style.display = "block";
 });
-
 
 // --------------------------------------------------------------------------------------
 // [enemies => meteors]

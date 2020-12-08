@@ -21,7 +21,7 @@ tetradic:               #383bbd, #bd38bd, #bdbd38   (blue, magenta, greenish-yel
 /* main selectors */
 body {
     font-family: 'VT323', monospace;
-    background-color: rgb(40,40,40);
+    background-color: #282830;
     color: white;
     width: auto;
     height: auto;
@@ -46,6 +46,7 @@ h2, h3, h4, h5, h6 {
     margin-top: 20px;
     color: #bd5938;
 }
+
 /* h4 for the character selection screen */
 h4 {
     margin-top: 20px;
@@ -92,7 +93,6 @@ a:hover {
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px;
-
 }
 
 /* -------------------------------------------------------------------------------------- */
@@ -106,14 +106,13 @@ a:hover {
     position: absolute;
 }
 
-
 #player img {
     width: auto;
     height: 68px;
     display: block;
 }
 
-
+/* -------------------------------------------------------------------------------------- */
 
 /* game images */
 img {
@@ -174,3 +173,5 @@ img {
     background-color: #bd9c38;
     color: white;
   }
+
+/* -------------------------------------------------------------------------------------- */
