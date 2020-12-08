@@ -152,6 +152,11 @@ img {
 
 /* character selection - button effects */
 
+.char-button-div {
+    position: absolute;
+    bottom: 15px;
+    left: 117px;
+}
 .char-button {
     background-color: #bd5938; 
     border: none;
