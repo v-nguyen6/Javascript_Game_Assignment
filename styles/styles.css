@@ -5,6 +5,18 @@
 */
 
 /* -------------------------------------------------------------------------------------- */
+/*
+                                    [color schemes]
+                                
+background color:       #bd9c38                     (brown)
+complimentary:          #383bbd                     (blue)
+monochromatic:          #a37a51                     (brown)
+analogous:              #bd9c38, #bd5938            (golden-brown, terracotta brown)
+split complimentary:    #7b38bd, #38bdbb            (purple, teal)
+triadic:                #bd38bd, #38bd38            (magenta, green)
+tetradic:               #383bbd, #bd38bd, #bdbd38   (blue, magenta, greenish-yellow)
+*/
+/* -------------------------------------------------------------------------------------- */
 
 /* main selectors */
 body {
@@ -32,7 +44,12 @@ h3, p {
 
 h2, h3, h4, h5, h6 {
     margin-top: 20px;
-    color: #FF73B9;
+    color: #bd5938;
+}
+/* h4 for the character selection screen */
+h4 {
+    margin-top: 20px;
+    color: #bd5938;
 }
 
 footer {
@@ -50,11 +67,11 @@ a,
 a:visited,
 a:active {
     text-decoration: none;
-    color: #FF73B9;
+    color: #bd5938;
 }
 
 a:hover {
-    color: #FF007F;
+    color: #bd9c38;
 }
 
 /* -------------------------------------------------------------------------------------- */
@@ -65,22 +82,25 @@ a:hover {
     padding-right: 20px;
 }
 .game-container {
+    background-image: url('../images/tree_background-1.png');
     background-color: black;
-    height: 500px;
-    width: 700px;
+    background-size: 100%;
+    border-radius: 25px;
+    position: relative;
+    height: 445px;
+    width: 756px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px;
-    border: 2px solid #FF73B9;
-    position: relative;
+
 }
 
 /* -------------------------------------------------------------------------------------- */
 
 /* Main Character */
 #player {
-    width: 68px; 
-    height: 68px;
+    width: auto; 
+    height: 100px;
     bottom: -15px;
    /* left: 300px; */
     position: absolute;
@@ -88,7 +108,7 @@ a:hover {
 
 
 #player img {
-    width: 68px;
+    width: auto;
     height: 68px;
     display: block;
 }
@@ -105,9 +125,13 @@ img {
 .gallery {
     position: absolute;
     text-align: center;
+    background-color: rgba(255,255,255,0.9);
+    border: 3px solid #bd5938;
+    border-radius: 25px;
     padding: 10px 10px;
-    left: 170px;
-    top: 70px;
+    left: 190px;
+    top: 50px;
+    height: 325px;
 }
 
 .thumbnails img {
@@ -131,7 +155,7 @@ img {
 /* character selection - button effects */
 
 .char-button {
-    background-color: #FF73B9; 
+    background-color: #bd5938; 
     border: none;
     color: white;
     padding: 5px 10px;
@@ -144,6 +168,7 @@ img {
     cursor: pointer;
     text-transform: lowercase;
     font-family: 'VT323', monospace;
+    bottom: 0;
   }
   
   .char-button:hover {
