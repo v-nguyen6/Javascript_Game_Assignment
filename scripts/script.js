@@ -121,6 +121,19 @@ window.addEventListener('keydown', (event) => {
 
 
 // --------------------------------------------------------------------------------------
+// [timer function]
+
+
+
+
+
+// --------------------------------------------------------------------------------------
+// [earn points => collect falling meat]
+
+const stats = document.getElementById("stats");
+stats.style.display = "none";
+
+// --------------------------------------------------------------------------------------
 // [character selection]
 
 var images = document.getElementsByClassName('thumbnails')[0].getElementsByTagName('img');
@@ -140,6 +153,7 @@ const gallery = document.getElementById("gallery")
 charButton.addEventListener('click', function(){
     gallery.style.display = "none";
     player.style.display = "block";
+    stats.style.display = "block";
 });
 
 // --------------------------------------------------------------------------------------
@@ -152,24 +166,6 @@ charButton.addEventListener('click', function(){
  */
 
 
-
-
-// --------------------------------------------------------------------------------------
-// [timer function]
-/*
-    rules:
-        1. 
-*/
-
-
-
-
-// --------------------------------------------------------------------------------------
-// [earn points => collect falling meat]
-/*
-    rules:
-        1. 
-*/
 
 
 
