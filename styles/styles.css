@@ -192,3 +192,12 @@ img {
     bottom: -50px;
     padding-left: 20px;
 }
+
+/* -------------------------------------------------------------------------------------- */
+
+/* falling asteroids */
+#asteroic-1 {
+    position: absolute;
+    left: 240px;
+    top: 0px;
+}

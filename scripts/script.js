@@ -165,6 +165,51 @@ charButton.addEventListener('click', function(){
         3. when meteors come in contact with dinosaur, game over
  */
 
+ asteroidTimer = null;
+ asteroid1 = null;
+
+ // Create function to randomly animate asteroids of different sizes
+ function getRandomAsteroidWidth() {
+     min = 20;
+     max = 60;
+
+     return Math.floor(Math.random() * Math.floor(max) + min);
+ }
+
+ // Create function to randomly animate the position of the asteroid on the window
+ function getRandomNewLeftPosition() {
+     min = 0;
+     max = window.innerWidth - (parseInt(asteroid1.style.left) + asteroid1.width);
+
+     newX = Math.floor(Math.random() * Math.floor(max));
+
+     return newX;
+ }
+
+ // Create function to have the astroids falling 
+ function fall(idOfTheAsteroid) {
+
+    let theAstroid = document.getElementById(idOfTheAsteroid);
+
+    if(parseInt(theAstroid.style.top) + theAstroid.height >= window.innerHeight) {
+         
+    /* for points
+        points++;
+    */
+    
+    theAstroid.style.top = "0px";
+    theAstroid.style.left = getRandomNewLeftPosition() + "px";
+    theAstroid.width = getRandomAsteroidWidth();
+
+    if (idOfTheAsteroid == 'asteroid-1')
+        
+     } 
+ }
+
+
+ 
+
+
 
 
 
@@ -179,5 +224,8 @@ charButton.addEventListener('click', function(){
         2. falls faster with time
         3. when meteors come in contact with dinosaur, game over
  */
+
+points = 0;
+
 
 
