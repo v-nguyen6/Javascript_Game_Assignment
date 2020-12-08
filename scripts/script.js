@@ -165,56 +165,76 @@ charButton.addEventListener('click', function(){
         3. when meteors come in contact with dinosaur, game over
  */
 
- asteroidTimer = null;
- asteroid1 = null;
+asteroidTimer1 = null;
+asteroid1 = null;
 
- // Create function to randomly animate asteroids of different sizes
- function getRandomAsteroidWidth() {
-     min = 20;
-     max = 60;
+// Create function to randomly animate asteroids of different sizes
+function getRandomAsteroidWidth() {
+    min = 20;
+    max = 60;
 
-     return Math.floor(Math.random() * Math.floor(max) + min);
- }
+    return Math.floor(Math.random() * Math.floor(max) + min);
+}
 
- // Create function to randomly animate the position of the asteroid on the window
- function getRandomNewLeftPosition() {
-     min = 0;
-     max = window.innerWidth - (parseInt(asteroid1.style.left) + asteroid1.width);
+// Create function to randomly animate the position of the asteroid on the window
+function getRandomNewLeftPosition() {
+    min = 0;
+    max = window.innerWidth - (parseInt(asteroid1.style.left) + asteroid1.width);
 
-     newX = Math.floor(Math.random() * Math.floor(max));
+    newX = Math.floor(Math.random() * Math.floor(max));
 
-     return newX;
- }
+    return newX;
+}
 
- // Create function to have the astroids falling 
- function fall(idOfTheAsteroid) {
+// Create function to have the astroids falling 
+function fall(idOfTheAsteroid) {
 
     let theAstroid = document.getElementById(idOfTheAsteroid);
 
     if(parseInt(theAstroid.style.top) + theAstroid.height >= window.innerHeight) {
-         
-    /* for points
-        points++;
-    */
-    
-    theAstroid.style.top = "0px";
-    theAstroid.style.left = getRandomNewLeftPosition() + "px";
-    theAstroid.width = getRandomAsteroidWidth();
-
-    if (idOfTheAsteroid == 'asteroid-1')
+            
+        /* for points
+            points++;
+        */
         
-     } 
- }
+        theAstroid.style.top = "0px";
+        theAstroid.style.left = getRandomNewLeftPosition() + "px";
+        theAstroid.width = getRandomAsteroidWidth();
 
+        if (idOfTheAsteroid == 'asteroid-1') {
+            clearInterval(asteroidTimer1);
+            asteroidTimer1 = setInterval("fall('" + idOfTheAsteroid + "')", intervalMs);
+        }
+        else if (idOfTheAsteroid == "asteroid-2") {
+            clearInterval(asteroidTimer2);
+            asteroidTimer2 = setInterval("fall('" + idOfTheAsteroid + "')", intervalsMs);
+        }
 
- 
+        //makes the width of the asteroid 
+        intervalMs = getRandomAsteroidWidth();
+    }
+}
 
+// Create function to make asteroids fall 
+function makeAsteroidsFall() {
+    asteroid1 = document.getElementById("asteroid-1");
 
+    asteroid2 = document.createElement("img");
+    asteroid2.id = "asteroid-2";
+    asteroid2.style.top = "0px";
+    asteroid2.style.position = "absolute";
+    asteroid2.style.left = getRandomNewLeftPosition();
+    asteroid2.width = getRandomAsteroidWidth();
+    asteroid2.src="asteroid_2.png";
+    document.body.appendChild(asteroid2);
 
+    asteroid1.width = getRandomAsteroidWidth();
+    intervalMs = getRandomAsteroidWidth();
+    asteroidTimer1 = setInterval("fall('asteroid-1)", intervalMs);
+    asteroidTimer2 = setInterval("fall('asteroid02)", 5);
+}
 
-
-
-
+onload = makeAsteroidsFall;
 
 // --------------------------------------------------------------------------------------
 // [enemies => meteors]
@@ -224,8 +244,24 @@ charButton.addEventListener('click', function(){
         2. falls faster with time
         3. when meteors come in contact with dinosaur, game over
  */
-
+// Points
 points = 0;
 
+
+
+
+
+// --------------------------------------------------------------------------------------
+// [gamve over state]
+ /* Setting Timeout for points as well as game over
+ setTimeout("alert(points)", 10000);
+ setTimeout(gameOver, 12000);
+*/
+function gameOver() {
+    clearInterval(asteroidTimer1);
+    clearInterval(asteroidTimer2);
+    clearInterval(myTimer);
+    alert('GAME OVER');
+}
 
 
