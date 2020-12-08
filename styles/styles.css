@@ -83,7 +83,7 @@ a:hover {
     padding-right: 20px;
 }
 .game-container {
-    background-image: url('../images/tree_background-1.png');
+    background-image: url('../images/tree_background-1.png'); /* credits: https://ansimuz.itch.io/parallax-forest */
     background-color: black;
     background-size: 100%;
     border-radius: 25px;
@@ -186,9 +186,8 @@ img {
 
 .stats {
     position: absolute;
-    padding: 20px 20px;
-    background-color:  rgba(0,0,0,0.9);
-    border-radius: 25px;
-    text-align: left;
     color: white;
+    font-size: 18px;
+    bottom: -50px;
+    padding-left: 20px;
 }
