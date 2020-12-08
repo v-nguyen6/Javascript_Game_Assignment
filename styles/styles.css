@@ -155,8 +155,9 @@ img {
 .char-button {
     background-color: #bd5938; 
     border: none;
+    border-radius: 5px;
     color: white;
-    padding: 5px 10px;
+    padding: 7px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -175,3 +176,14 @@ img {
   }
 
 /* -------------------------------------------------------------------------------------- */
+
+/* stats */
+
+.stats {
+    position: absolute;
+    padding: 20px 20px;
+    background-color:  rgba(0,0,0,0.9);
+    border-radius: 25px;
+    text-align: left;
+    color: white;
+}
