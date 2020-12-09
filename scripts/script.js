@@ -165,76 +165,105 @@ charButton.addEventListener('click', function(){
         3. when meteors come in contact with dinosaur, game over
  */
 
-asteroidTimer1 = null;
-asteroid1 = null;
+meteorTimer1 = null;
+meteor1 = null;
+points = 0;
+timeSeconds = 0;
+myTimer = setInterval(updateTime, 1000);
 
-// Create function to randomly animate asteroids of different sizes
-function getRandomAsteroidWidth() {
+
+function getRandomMeteorWidth() {
     min = 20;
     max = 60;
 
     return Math.floor(Math.random() * Math.floor(max) + min);
 }
 
-// Create function to randomly animate the position of the asteroid on the window
+
 function getRandomNewLeftPosition() {
     min = 0;
-    max = window.innerWidth - (parseInt(asteroid1.style.left) + asteroid1.width);
+    
+    max = window.innerWidth - (parseInt(meteor1.style.left) + meteor1.width);
 
     newX = Math.floor(Math.random() * Math.floor(max));
 
+    // alert("new x position is " + newX)
     return newX;
 }
 
-// Create function to have the astroids falling 
-function fall(idOfTheAsteroid) {
 
-    let theAstroid = document.getElementById(idOfTheAsteroid);
+function fall(idOfTheMeteor) {
 
-    if(parseInt(theAstroid.style.top) + theAstroid.height >= window.innerHeight) {
-            
-        /* for points
-            points++;
-        */
-        
-        theAstroid.style.top = "0px";
-        theAstroid.style.left = getRandomNewLeftPosition() + "px";
-        theAstroid.width = getRandomAsteroidWidth();
+    let theMeteor = document.getElementById(idOfTheMeteor);
 
-        if (idOfTheAsteroid == 'asteroid-1') {
-            clearInterval(asteroidTimer1);
-            asteroidTimer1 = setInterval("fall('" + idOfTheAsteroid + "')", intervalMs);
+    theMeteor.style.top = parseInt(theMeteor.style.top) + 1 + "px";
+
+    if(parseInt(theMeteor.style.top) + theMeteor.height >= window.innerHeight) {
+
+        points++;
+
+        // Animates the meteor falling        
+        theMeteor.style.top = "0px";
+        theMeteor.style.left = getRandomNewLeftPosition() + "px";
+        theMeteor.width = getRandomMeteorWidth();
+
+        if(idOfTheMeteor == 'm1') {
+            clearInterval(meteorTimer1);
+            meteorTimer1=setInterval("fall('" + idOfTheMeteor +"')", intervalMs);   
         }
-        else if (idOfTheAsteroid == "asteroid-2") {
-            clearInterval(asteroidTimer2);
-            asteroidTimer2 = setInterval("fall('" + idOfTheAsteroid + "')", intervalsMs);
+        else if(idOfTheMeteor == "m2") {
+            clearInterval(meteorTimer2);
+            meteorTimer2=setInterval("fall('" + idOfTheMeteor +"')", intervalMs);
         }
 
-        //makes the width of the asteroid 
-        intervalMs = getRandomAsteroidWidth();
+        intervalMs = getRandomMeteorWidth();
+
     }
 }
 
-// Create function to make asteroids fall 
-function makeAsteroidsFall() {
-    asteroid1 = document.getElementById("asteroid-1");
+// Parameters for the Timing function to alert the end of game 
+setTimeout("alert(points)", 10000);
+setTimeout(gameOver, 12000);
 
-    asteroid2 = document.createElement("img");
-    asteroid2.id = "asteroid-2";
-    asteroid2.style.top = "0px";
-    asteroid2.style.position = "absolute";
-    asteroid2.style.left = getRandomNewLeftPosition();
-    asteroid2.width = getRandomAsteroidWidth();
-    asteroid2.src="asteroid_2.png";
-    document.body.appendChild(asteroid2);
-
-    asteroid1.width = getRandomAsteroidWidth();
-    intervalMs = getRandomAsteroidWidth();
-    asteroidTimer1 = setInterval("fall('asteroid-1)", intervalMs);
-    asteroidTimer2 = setInterval("fall('asteroid02)", 5);
+function gameOver() {
+    clearInterval(meteorTimer1);
+    clearInterval(meteorTimer2);
+    clearInterval(myTimer);
+    alert('GAME OVER');
 }
 
-onload = makeAsteroidsFall;
+// Function to make meteors animate and fall down 
+function makeMeteorsRain() {
+    //alert(window.innerHeight)
+
+    meteor1 = document.getElementById("m1");
+
+    // Creates the 2nd meteor
+    meteor2 = document.createElement("img");
+    // assigns id to the newly created meteor 2
+    meteor2.id = "m2";
+    // assigns style parameters to the newly created meteor
+    meteor2.style.top = "0px";
+    meteor2.style.position="absolute";
+    meteor2.style.left= getRandomNewLeftPosition();
+    meteor2.width = getRandomMeteorWidth();
+    meteor2.src="./images/meteor.png";
+    document.body.appendChild(meteor2);
+
+
+    meteor1.width = getRandomMeteorWidth();
+    intervalMs = getRandomMeteorWidth();
+    meteorTimer1=setInterval("fall('m1')", intervalMs);
+    meteorTimer2=setInterval("fall('m2')", 5);
+}
+
+onload=makeMeteorsRain;
+
+
+function updateTime() {
+timeSeconds++;
+document.getElementById("time").innerHTML = timeSeconds;
+}
 
 // --------------------------------------------------------------------------------------
 // [enemies => meteors]
@@ -257,11 +286,11 @@ points = 0;
  setTimeout("alert(points)", 10000);
  setTimeout(gameOver, 12000);
 */
+/*
 function gameOver() {
     clearInterval(asteroidTimer1);
     clearInterval(asteroidTimer2);
     clearInterval(myTimer);
     alert('GAME OVER');
 }
-
-
+*/
