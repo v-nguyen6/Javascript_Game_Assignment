@@ -117,7 +117,9 @@ a:hover {
 
 /* game images */
 img {
-    height: 100px;
+    /* height: 100px; */
+    height: 3.5%;
+    width: 4%;
 }
 
 /* character selection */
@@ -136,6 +138,7 @@ img {
 
 .thumbnails img {
     border: 1px solid transparent;
+    width: 40px;
     height: 100%;
     padding: 1px;
     margin: 0 10px 10px 0;
@@ -147,7 +150,7 @@ img {
 .preview img {
     border: 1px solid transparent;
     padding: 1px;
-    width: 50px;
+    width: 40px;
     height: 100%;
 }
 
@@ -156,7 +159,7 @@ img {
 .char-button-div {
     position: absolute;
     bottom: 15px;
-    left: 117px;
+    left: 97px;
 }
 .char-button {
     background-color: #bd5938; 
