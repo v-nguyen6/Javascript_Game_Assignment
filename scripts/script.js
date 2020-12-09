@@ -167,22 +167,30 @@ charButton.addEventListener('click', function(){
 
 meteorTimer1 = null;
 meteor1 = null;
-points = 0;
-timeSeconds = 0;
-myTimer = setInterval(updateTime, 1000);
+meteorTimer2 = null;
+meteor2 = null;
 
 
+// function to produce random meteor widths
 function getRandomMeteorWidth() {
-    min = 20;
-    max = 60;
+    min = 10;
+    max = 30;
 
     return Math.floor(Math.random() * Math.floor(max) + min);
 }
 
+// function to produce random meteor heights
+function getRandomMeteorHeight() {
+    min = 10;
+    max = 30;
 
+    return Math.floor(Math.random() * Math.floor(max) + min);
+}
+
+// function to make the meteor fall at random positions in the window 
 function getRandomNewLeftPosition() {
     min = 0;
-    
+    //$("#game-container") INSTEAD OF WINDOW???
     max = window.innerWidth - (parseInt(meteor1.style.left) + meteor1.width);
 
     newX = Math.floor(Math.random() * Math.floor(max));
@@ -206,6 +214,7 @@ function fall(idOfTheMeteor) {
         theMeteor.style.top = "0px";
         theMeteor.style.left = getRandomNewLeftPosition() + "px";
         theMeteor.width = getRandomMeteorWidth();
+        theMeteor.height = getRandomMeteorHeight();
 
         if(idOfTheMeteor == 'm1') {
             clearInterval(meteorTimer1);
@@ -219,17 +228,6 @@ function fall(idOfTheMeteor) {
         intervalMs = getRandomMeteorWidth();
 
     }
-}
-
-// Parameters for the Timing function to alert the end of game 
-setTimeout("alert(points)", 10000);
-setTimeout(gameOver, 12000);
-
-function gameOver() {
-    clearInterval(meteorTimer1);
-    clearInterval(meteorTimer2);
-    clearInterval(myTimer);
-    alert('GAME OVER');
 }
 
 // Function to make meteors animate and fall down 
@@ -247,6 +245,7 @@ function makeMeteorsRain() {
     meteor2.style.position="absolute";
     meteor2.style.left= getRandomNewLeftPosition();
     meteor2.width = getRandomMeteorWidth();
+    meteor2.height = getRandomMeteorHeight();
     meteor2.src="./images/meteor.png";
     document.body.appendChild(meteor2);
 
@@ -260,10 +259,7 @@ function makeMeteorsRain() {
 onload=makeMeteorsRain;
 
 
-function updateTime() {
-timeSeconds++;
-document.getElementById("time").innerHTML = timeSeconds;
-}
+
 
 // --------------------------------------------------------------------------------------
 // [enemies => meteors]
@@ -287,10 +283,23 @@ points = 0;
  setTimeout(gameOver, 12000);
 */
 /*
+timeSeconds = 0;
+myTimer = setInterval(updateTime, 1000);
+
+// Parameters for the Timing function to alert the end of game 
+setTimeout("alert(points)", 1000000000);
+setTimeout(gameOver, 1000000);
+
 function gameOver() {
-    clearInterval(asteroidTimer1);
-    clearInterval(asteroidTimer2);
+    clearInterval(meteorTimer1);
+    clearInterval(meteorTimer2);
     clearInterval(myTimer);
     alert('GAME OVER');
+}
+}
+
+function updateTime() {
+    timeSeconds++;
+    document.getElementById("time").innerHTML = timeSeconds;
 }
 */
