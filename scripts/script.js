@@ -47,6 +47,8 @@
 // ------------------------------- the actual code lol ------------------------------- 
 
 // [sounds]
+// https://www.w3schools.com/graphics/game_sound.asp
+// https://www.codegrepper.com/code-examples/typescript/how+to+play+music+in+javascript
 
 // create a new object constructor to handle sound objects
 function sound(src) {
@@ -65,9 +67,30 @@ function sound(src) {
     }
   }
 
-function startGame() {
-    mySound = new sound("bounce.mp3");
-}
+    // sound when clicking buttons        https://www.zapsplat.com/music/game-tone-retro-chiptone-style-blip/ 
+    var buttonBlipSound = new sound("../sounds/buttonBlip.mp3");
+    
+    // ouchie when hit by meteor          https://www.zapsplat.com/music/game-sound-basic-digital-retro-incorrect-wrong-error-negative-tone-2/ 
+    var meteorHitSound = new sound("../sounds/meteorHit.mp3");
+    
+    // sound when you win the game        https://www.zapsplat.com/music/game-sound-retro-digital-fanfare-level-complete-or-achievement-tone-5/ 
+    var gameWonSound = new sound("../sounds/gameWon.mp3");
+    
+    // blip when you collect points       https://www.zapsplat.com/music/retro-8-bit-arcade-style-game-sound-action-blip-collect-item-1/ 
+    var pointsCollectSound = new sound("../sounds/pointsCollect.mp3");
+    
+    // sad tones when you lose :(         https://www.zapsplat.com/music/lose-life-or-negative-game-tone-with-a-retro-feel-and-stereo-delay-version-1/ 
+    var gameOverSound = new sound("../sounds/gameOver.mp3");
+
+const musicButton = document.getElementById("musicButton")
+
+// when user clicks "confirm selection", close screen and show player & stats
+musicButton.addEventListener('click', function(){
+    // background music                   https://www.zapsplat.com/music/game-music-retro-arcade-melody-with-electro-drums-and-synth-elements/ 
+    var backgroundMusic = new sound("../sounds/backgroundMusic.mp3");
+    backgroundMusic.play();
+});
+
 
 // --------------------------------------------------------------------------------------
 // [user => dinosaurs] 
@@ -179,6 +202,7 @@ charButton.addEventListener('click', function(){
     gallery.style.display = "none";
     player.style.display = "block";
     stats.style.display = "block";
+    
 });
 
 // --------------------------------------------------------------------------------------
