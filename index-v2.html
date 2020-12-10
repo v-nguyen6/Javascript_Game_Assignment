@@ -51,7 +51,7 @@ var myScore;
 
 // create game area & player
 function startGame() {
-    myGamePiece = new component(50, 50, "#38bd38", 50, 350); // just a box
+    myGamePiece = new component(50, 50, "/images/dinosaur_3_green_final.png", 50, 350, "image"); // just a box
     myScore = new component("18px", "VT323", "white", 30, 430, "text");
     myObstacle = new component(50, 50, "#383bbd", 300, 120); // just a box
     myGameArea.start();
@@ -95,6 +95,11 @@ function everyinterval(n) {
 function component(width, height, color, x, y, type) {
     this.gamearea = myGameArea;
     this.type = type;
+    // Image as player 
+    if (type == "image") {
+        this.image = new Image();
+        this.image.src = color;
+    }
     this.width = width;
     this.height = height;
 
@@ -108,7 +113,13 @@ function component(width, height, color, x, y, type) {
     this.update = function() {
         ctx = myGameArea.context;
         // test if component is "text" type
-        if (this.type == "text") {
+        if (type == "image") {
+            ctx.drawImage(this.image, 
+                          this.x, 
+                          this.y, 
+                          this.width, 
+                          this.height); 
+        } else if (this.type == "text") {
             ctx.font = this.width + " " + this.height;
             ctx.fillStyle = color;
             ctx.fillText(this.text, this.x, this.y);
