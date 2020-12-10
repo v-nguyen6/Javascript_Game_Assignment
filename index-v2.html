@@ -253,13 +253,13 @@ function updateGameArea() {
         myGamePiece.speedY = 3;
     }
 
-    // update score
-    myScore.text = "SCORE: " + myGameArea.frameNo;
-    myScore.update();
-
     // update player position
     myGamePiece.newPos();
     myGamePiece.update();
+
+    // update score
+    myScore.text = "SCORE: " + myGameArea.frameNo;
+    myScore.update();
 
     // -------------------------------------- 
     // update background ==> this code makes the player .png disappear
