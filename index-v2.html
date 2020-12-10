@@ -178,7 +178,6 @@ function component(width, height, color, x, y, type) {
         myGamePiece.gravity = n;
     }
 
-
     this.crashWith = function(otherobj) {
         var myleft = this.x;
         var myright = this.x + (this.width);
@@ -258,17 +257,18 @@ function updateGameArea() {
     myScore.text = "SCORE: " + myGameArea.frameNo;
     myScore.update();
 
+    // update player position
+    myGamePiece.newPos();
+    myGamePiece.update();
+
     // -------------------------------------- 
     // update background ==> this code makes the player .png disappear
 
-     myBackground.newPos();
+    myBackground.newPos();
     myBackground.update(); 
 
     // -------------------------------------- 
 
-    // update player position
-    myGamePiece.newPos();
-    myGamePiece.update();
 }
 
 </script>
