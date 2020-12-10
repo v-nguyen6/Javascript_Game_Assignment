@@ -39,21 +39,19 @@
 
 <script>
 // note canvas:
-//  this.canvas.width = 756;
-//  this.canvas.height = 445;
+//      this.canvas.width = 756;
+//      this.canvas.height = 445;
 
-// create player variable
+// declare variables
 var myGamePiece;
-// create obstacle
 var myObstacles = [];
-// keep track of score
 var myScore;
 
 // create game area & player
 function startGame() {
-    myGamePiece = new component(50, 50, "/images/dinosaur_3_green_final.png", 50, 350, "image"); // just a box
+    myGamePiece = new component(50, 50, "/images/dinosaur_3_green_final.png", 50, 350, "image"); 
     myScore = new component("18px", "VT323", "white", 30, 430, "text");
-    myObstacle = new component(50, 50, "#383bbd", 300, 120); // just a box
+    myObstacle = new component(50, 50, "#383bbd", 300, 120); 
     myGameArea.start();
 }
 
@@ -65,15 +63,16 @@ var myGameArea = {
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.frameNo = 0;       
-        // update the display every 20ms
-        // by adding an interval to function every 20ms
+        
+        // update the display every 20ms by adding an interval to function every 20ms
         this.interval = setInterval(updateGameArea, 20);
-        // check if keys are pressed by checking key code
-        // insert an element when key is pressed
+
+        // check if keys are pressed by checking key code => insert an element when key is pressed
         window.addEventListener('keydown', function (e) {
             myGameArea.keys = (myGameArea.keys || []);
             myGameArea.keys[e.keyCode] = (e.type == "keydown");
         })
+
         // if key is no longer pressed...
         window.addEventListener('keyup', function (e) {
             myGameArea.keys[e.keyCode] = (e.type == "keydown");            
@@ -88,18 +87,22 @@ var myGameArea = {
 }
 
 function everyinterval(n) {
-  if ((myGameArea.frameNo / n) % 1 == 0) {return true;}
+  if ((myGameArea.frameNo / n) % 1 == 0) {
+      return true;
+    }
   return false;
 }
 
 function component(width, height, color, x, y, type) {
     this.gamearea = myGameArea;
     this.type = type;
+
     // Image as player 
     if (type == "image") {
         this.image = new Image();
         this.image.src = color;
     }
+
     this.width = width;
     this.height = height;
 
@@ -109,21 +112,24 @@ function component(width, height, color, x, y, type) {
 
     this.x = x;
     this.y = y;    
+
      // handles drawing of component
     this.update = function() {
         ctx = myGameArea.context;
-        // test if component is "text" type
+
+        // check if component is "image" type
         if (type == "image") {
-            ctx.drawImage(this.image, 
-                          this.x, 
-                          this.y, 
-                          this.width, 
-                          this.height); 
-        } else if (this.type == "text") {
+            ctx.drawImage(this.image, this.x, this.y, this.width, this.height); 
+        } 
+
+        // test if component is "text" type
+        else if (this.type == "text") {
             ctx.font = this.width + " " + this.height;
             ctx.fillStyle = color;
             ctx.fillText(this.text, this.x, this.y);
-        } else {
+        } 
+
+        else {
             ctx.fillStyle = color;
             ctx.fillRect(this.x, this.y, this.width, this.height);
         }
@@ -158,8 +164,8 @@ function updateGameArea() {
     var x, y;
     for (i = 0; i < myObstacles.length; i += 1) {
         if (myGamePiece.crashWith(myObstacles[i])) {
-        myGameArea.stop();
-        return;
+            myGameArea.stop();
+            return;
         }
     }
     myGameArea.clear();
@@ -167,7 +173,7 @@ function updateGameArea() {
     // count the score with frameNo
     myGameArea.frameNo += 1;
 
-    // send in obstacles of random sizes
+    // send in obstacles of random sizes (need to work on this)
     if (myGameArea.frameNo == 1 || everyinterval(150)) {
         x = myGameArea.canvas.width;
         minHeight = 20;
@@ -176,6 +182,7 @@ function updateGameArea() {
         minGap = 500;
         maxGap = 200;
         gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
+
         // styling the obstacles
         myObstacles.push(new component(100, height, "#383bbd", x, 0));
         myObstacles.push(new component(100, x - height - gap, "#383bbd", x, height + gap));
@@ -186,15 +193,28 @@ function updateGameArea() {
     }
 
     // move player when arrow keys are pressed
-    if (myGameArea.keys && myGameArea.keys[37]) {myGamePiece.speedX = -3; }
-    if (myGameArea.keys && myGameArea.keys[39]) {myGamePiece.speedX = 3; }
-    if (myGameArea.keys && myGameArea.keys[38]) {myGamePiece.speedY = -3; }
-    if (myGameArea.keys && myGameArea.keys[40]) {myGamePiece.speedY = 3; }
+    // left arrow key
+    if (myGameArea.keys && myGameArea.keys[37]) {
+        myGamePiece.speedX = -3; 
+    }
+    // right arrow key
+    if (myGameArea.keys && myGameArea.keys[39]) {
+        myGamePiece.speedX = 3; 
+    }
+    // top arrow key
+    if (myGameArea.keys && myGameArea.keys[38]) {
+        myGamePiece.speedY = -3; 
+    }
+    // bottom arrow key
+    if (myGameArea.keys && myGameArea.keys[40]) {
+        myGamePiece.speedY = 3;
+    }
 
     // update score
     myScore.text = "SCORE: " + myGameArea.frameNo;
     myScore.update();
 
+    // update player position
     myGamePiece.newPos();
     myGamePiece.update();
 }
