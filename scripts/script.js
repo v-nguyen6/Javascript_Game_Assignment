@@ -94,7 +94,7 @@ player.style.left = '300px';
 
 player.style.display = "none";
 
-let modifier = 6;
+let playerSpeed = 6;
 
 window.addEventListener('keydown', (event) => {
 
@@ -107,14 +107,14 @@ window.addEventListener('keydown', (event) => {
     
     switch(event.key) {
         /*
-        case 'ArrowUp': style.top = `${parseInt(style.top) - modifier}px`; 
+        case 'ArrowUp': style.top = `${parseInt(style.top) - playerSpeed}px`; 
             break;
-        case 'ArrowDown': style.top = `${parseInt(style.top) + modifier}px`; 
+        case 'ArrowDown': style.top = `${parseInt(style.top) + playerSpeed}px`; 
             break;
         */
-        case 'ArrowLeft': player.style.left = `${x - modifier}px`; 
+        case 'ArrowLeft': player.style.left = `${x - playerSpeed}px`; 
             break;
-        case 'ArrowRight': player.style.left = `${x + modifier}px`; 
+        case 'ArrowRight': player.style.left = `${x + playerSpeed}px`; 
             break;
     }
 });
@@ -150,6 +150,7 @@ for (i = 0; i < images.length; i++) {
 const charButton = document.getElementById("charButton")
 const gallery = document.getElementById("gallery")
 
+// when user clicks "confirm selection", close screen and show player & stats
 charButton.addEventListener('click', function(){
     gallery.style.display = "none";
     player.style.display = "block";
@@ -270,14 +271,18 @@ onload=makeMeteorsRain;
         3. when meteors come in contact with dinosaur, game over
  */
 // Points
-points = 0;
 
+// points = 0;
 
+function pointsTracker() {
+    var usersPoints = "123";
+    document.getElementById("pointsStat").innerHTML = points;
+}
 
 
 
 // --------------------------------------------------------------------------------------
-// [gamve over state]
+// [game over state]
  /* Setting Timeout for points as well as game over
  setTimeout("alert(points)", 10000);
  setTimeout(gameOver, 12000);
@@ -303,3 +308,23 @@ function updateTime() {
     document.getElementById("time").innerHTML = timeSeconds;
 }
 */
+
+// --------------------------------------------------------------------------------------
+// [sounds]
+
+// create a new object constructor to handle sound objects
+function sound(src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    
+    this.play = function(){
+      this.sound.play();
+    }
+    this.stop = function(){
+      this.sound.pause();
+    }
+  }
