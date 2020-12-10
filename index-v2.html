@@ -45,22 +45,14 @@
 // create variables for well, the pieces of the game
 var myGamePiece;        
 var myObstacles = [];
-// create variables for sounds
+var myScore;
 var myMusic;
-var mySound;
-var GameOverSound;
-var gameWonSound;
-var DamageSound;
-var PointsSound;
 
 // create game area & player
 function startGame() {
     myGamePiece = new component(50, 50, "/images/dinosaur_3_green_final.png", 50, 350, "image"); // just a box
     myScore = new component("18px", "VT323", "white", 30, 430, "text");
     myObstacle = new component(50, 50, "#383bbd", 300, 120); // just a box
-    mySound = new sound("/sounds/buttonBlip.mp3");
-    //myMusic = new sound("/sounds/backgroundMusic.mp3");
-   // myMusic.play();
     myGameArea.start();
 }
 
@@ -165,7 +157,6 @@ function updateGameArea() {
     var x, y;
     for (i = 0; i < myObstacles.length; i += 1) {
         if (myGamePiece.crashWith(myObstacles[i])) {
-        myMusic.stop();
         myGameArea.stop();
         return;
         }
