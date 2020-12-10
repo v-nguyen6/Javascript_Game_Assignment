@@ -1,0 +1,176 @@
+<html>
+<head>
+<style>
+    img{height:100px}
+</style>
+<script>
+
+theLetterToBeMoved = 'A'
+
+function loadImages()
+{
+    let imA = document.createElement("img")
+    imA.id = "A"
+    imA.src = "images/letters/a.png"
+    document.getElementById("top").appendChild(imA)
+
+    let imB = document.createElement("img")
+    imB.id = "B"
+    imB.src = "images/letters/b.png"
+    document.getElementById("top").appendChild(imB)
+
+    let imC = document.createElement("img")
+    imC.id = "C"
+    imC.src = "images/letters/c.png"
+    document.getElementById("top").appendChild(imC)
+
+    let imD = document.createElement("img")
+    imD.id = "D"
+    imD.src = "images/letters/d.png"
+    document.getElementById("top").appendChild(imD)
+
+    let imE = document.createElement("img")
+    imE.id = "E"
+    imE.src = "images/letters/e.png"
+    document.getElementById("top").appendChild(imE)
+
+    let imF = document.createElement("img")
+    imF.id = "F"
+    imF.src = "images/letters/f.png"
+    document.getElementById("top").appendChild(imF)
+
+    let imG = document.createElement("img")
+    imG.id = "G"
+    imG.src = "images/letters/g.png"
+    document.getElementById("top").appendChild(imG)
+
+    let imH = document.createElement("img")
+    imH.id = "H"
+    imH.src = "images/letters/h.png"
+    document.getElementById("top").appendChild(imH)
+
+    let imI = document.createElement("img")
+    imI.id = "I"
+    imI.src = "images/letters/i.png"
+    document.getElementById("top").appendChild(imI)
+
+    let imJ = document.createElement("img")
+    imJ.id = "J"
+    imJ.src = "images/letters/j.png"
+    document.getElementById("top").appendChild(imJ)
+
+
+    var allImages = document.getElementsByTagName("img")
+
+    for(let i = 0; i < allImages.length; i++)
+    {
+        allImages[i].onclick = move
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+function createDivs()
+{
+    let topDiv = document.createElement("div")
+    topDiv.id = "top"
+    topDiv.style.minHeight = "120px"
+    topDiv.style.backgroundColor = "cyan"
+    document.body.appendChild(topDiv)
+
+    let middleDiv = document.createElement("div")
+    middleDiv.id = "middle"
+    middleDiv.style.minHeight = "120px"
+    middleDiv.style.backgroundColor = "yellow"
+    document.body.appendChild(middleDiv)      
+
+
+    let thirdDiv = document.createElement("div")
+    thirdDiv.id = "middle"
+    thirdDiv.style.minHeight = "120px"
+    thirdDiv.style.backgroundColor = "silver"
+    document.body.appendChild(thirdDiv)    
+
+    let bottomDiv = document.createElement("div")
+    bottomDiv.id = "bottom"
+    bottomDiv.style.minHeight = "120px"
+    bottomDiv.style.backgroundColor = "pink"
+    document.body.appendChild(bottomDiv)    
+}
+
+onload=function()
+{
+    createDivs()
+    loadImages()
+}
+
+onkeydown=moveSomething
+
+function moveSomething(e)
+{
+    if(e.which >= 65 && e.which <= 90)
+    {
+        theLetterToBeMoved = String.fromCharCode(e.which)
+    } 
+    else if(e.which == 37)  // left arrow
+    {
+        moveLeft()
+    }
+    else if(e.which == 38) // up arrow
+    {
+        moveUp() // to the end of the previous div
+    }
+    else if(e.which == 39) // right arrow
+    {
+        moveRight()
+    }
+    else if(e.which == 40) // down arrow
+    {
+        moveDown() // to the end of the next div
+    }
+
+}
+
+function moveLeft()
+{
+    
+}
+
+function moveRight()
+{
+    var imageToMove = document.getElementById(theLetterToBeMoved)
+
+    if(imageToMove.nextSibling != null)
+    {
+        imageToMove.parentNode.insertBefore(imageToMove.nextSibling, imageToMove) 
+    }
+    else
+    {
+        // if this is the last image in this div, move to first image of next div:
+        if(imageToMove.parentNode.nextSibling != null)
+        {
+            imageToMove.parentNode.nextSibling.insertBefore(imageToMove, imageToMove.parentNode.nextSibling.firstChild)
+        }
+        else
+        {
+            // if this is the last image in the bottom, move to first image of top:
+            document.getElementsByTagName("div")[0].insertBefore(imageToMove, document.getElementsByTagName("div")[0].firstChild)
+        }
+    }
+
+}
+</script>
+</head>
+<body></body>
+</html>
