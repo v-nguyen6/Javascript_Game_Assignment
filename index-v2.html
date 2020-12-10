@@ -38,7 +38,8 @@
 <body onload="startGame()">
 
 <script>
-// note canvas:
+// made with the help of https://www.w3schools.com/graphics/game_intro.asp :)
+// note to self:
 //      this.canvas.width = 756;
 //      this.canvas.height = 445;
 
@@ -63,7 +64,7 @@ var myGameArea = {
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.frameNo = 0;       
-        
+
         // update the display every 20ms by adding an interval to function every 20ms
         this.interval = setInterval(updateGameArea, 20);
 
@@ -93,6 +94,7 @@ function everyinterval(n) {
   return false;
 }
 
+// the component constructor function...
 function component(width, height, color, x, y, type) {
     this.gamearea = myGameArea;
     this.type = type;
