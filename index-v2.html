@@ -46,11 +46,14 @@
 var myGamePiece;
 // create obstacle
 var myObstacles = [];
+// keep track of score
+var myScore;
 
 // create game area & player
 function startGame() {
-    myGamePiece = new component(50, 50, "#38bd38", 50, 350);
-    myObstacle = new component(50, 50, "#383bbd", 300, 120);
+    myGamePiece = new component(50, 50, "#38bd38", 50, 350); // just a box
+    myScore = new component("18px", "VT323", "white", 30, 430, "text");
+    myObstacle = new component(50, 50, "#383bbd", 300, 120); // just a box
     myGameArea.start();
 }
 
@@ -89,8 +92,9 @@ function everyinterval(n) {
   return false;
 }
 
-function component(width, height, color, x, y) {
+function component(width, height, color, x, y, type) {
     this.gamearea = myGameArea;
+    this.type = type;
     this.width = width;
     this.height = height;
 
@@ -103,8 +107,15 @@ function component(width, height, color, x, y) {
      // handles drawing of component
     this.update = function() {
         ctx = myGameArea.context;
-        ctx.fillStyle = color;
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+        // test if component is "text" type
+        if (this.type == "text") {
+            ctx.font = this.width + " " + this.height;
+            ctx.fillStyle = color;
+            ctx.fillText(this.text, this.x, this.y);
+        } else {
+            ctx.fillStyle = color;
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+        }
     }
     // changes the component's position
     this.newPos = function() {
@@ -141,30 +152,37 @@ function updateGameArea() {
         }
     }
     myGameArea.clear();
+
+    // count the score with frameNo
     myGameArea.frameNo += 1;
 
     // send in obstacles of random sizes
     if (myGameArea.frameNo == 1 || everyinterval(150)) {
         x = myGameArea.canvas.width;
         minHeight = 20;
-        maxHeight = 200;
+        maxHeight = 50;
         height = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
-        minGap = 50;
+        minGap = 500;
         maxGap = 200;
         gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
-        myObstacles.push(new component(10, height, "green", x, 0));
-        myObstacles.push(new component(10, x - height - gap, "green", x, height + gap));
+        // styling the obstacles
+        myObstacles.push(new component(100, height, "#383bbd", x, 0));
+        myObstacles.push(new component(100, x - height - gap, "#383bbd", x, height + gap));
     }
     for (i = 0; i < myObstacles.length; i += 1) {
-        myObstacles[i].x += -1;
+        myObstacles[i].x += -2;
         myObstacles[i].update();
     }
 
     // move player when arrow keys are pressed
-    if (myGameArea.keys && myGameArea.keys[37]) {myGamePiece.speedX = -1; }
-    if (myGameArea.keys && myGameArea.keys[39]) {myGamePiece.speedX = 1; }
-    if (myGameArea.keys && myGameArea.keys[38]) {myGamePiece.speedY = -1; }
-    if (myGameArea.keys && myGameArea.keys[40]) {myGamePiece.speedY = 1; }
+    if (myGameArea.keys && myGameArea.keys[37]) {myGamePiece.speedX = -3; }
+    if (myGameArea.keys && myGameArea.keys[39]) {myGamePiece.speedX = 3; }
+    if (myGameArea.keys && myGameArea.keys[38]) {myGamePiece.speedY = -3; }
+    if (myGameArea.keys && myGameArea.keys[40]) {myGamePiece.speedY = 3; }
+
+    // update score
+    myScore.text = "SCORE: " + myGameArea.frameNo;
+    myScore.update();
 
     myGamePiece.newPos();
     myGamePiece.update();
