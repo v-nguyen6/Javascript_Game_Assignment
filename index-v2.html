@@ -87,6 +87,7 @@ var myGameArea = {
     }
 }
 
+// function used to update and loop through the frames of the animation 
 function everyinterval(n) {
   if ((myGameArea.frameNo / n) % 1 == 0) {
       return true;
@@ -94,7 +95,11 @@ function everyinterval(n) {
   return false;
 }
 
+<<<<<<< Updated upstream
 // the component constructor function...
+=======
+// main component constructors 
+>>>>>>> Stashed changes
 function component(width, height, color, x, y, type) {
     this.gamearea = myGameArea;
     this.type = type;
@@ -112,8 +117,17 @@ function component(width, height, color, x, y, type) {
     this.speedX = 0;
     this.speedY = 0;    
 
+    // gravity indicator 
+    this.gravity = 0.05;
+    this.gravitySpeed = 0;
+
+    // controls x . y coordinates
     this.x = x;
+<<<<<<< Updated upstream
     this.y = y;    
+=======
+    this.y = y;  
+>>>>>>> Stashed changes
 
      // handles drawing of component
     this.update = function() {
@@ -138,9 +152,34 @@ function component(width, height, color, x, y, type) {
     }
     // changes the component's position
     this.newPos = function() {
+        // gravity effects on the position components
+        this.gravitySpeed += this.gravity;
+        // updates for x postion 
         this.x += this.speedX;
-        this.y += this.speedY;        
+        // gravity effects on the y coordinates 
+        this.y += this.speedY + this.gravitySpeed;   
+        // component to notify and detect when player hits the bottom 
+        this.hitBottom();  
     }
+
+    // function to detect when player lands on the bottom of the canvas 
+    this.hitBottom = function() {
+        // variable to assign bottom of canvas 
+        var bottomScreen = myGameArea.canvas.height - this.height;
+        // if statement for detection
+        if (this.y > bottomScreen) {
+            // if the bottom(y) of player is equal to bottom of the screen
+            this.y = bottomScreen;
+            // then stop player from moving (gravity = 0)
+            this.gravitySpeed = 0;
+        }
+    }
+
+    function accelerate(n) {
+        myGamePiece.gravity = n;
+    }
+
+
     this.crashWith = function(otherobj) {
         var myleft = this.x;
         var myright = this.x + (this.width);
