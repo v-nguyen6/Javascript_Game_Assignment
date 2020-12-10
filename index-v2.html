@@ -47,12 +47,19 @@
 var myGamePiece;
 var myObstacles = [];
 var myScore;
+// -------------------------------------- mina: i'm adding these lil dividers so i know what code to delete when it inevitably breaks
+var myBackground;
+// -------------------------------------- 
+
 
 // create game area & player
 function startGame() {
     myGamePiece = new component(50, 50, "/images/dinosaur_3_green_final.png", 50, 350, "image"); 
     myScore = new component("18px", "VT323", "white", 30, 430, "text");
     myObstacle = new component(50, 50, "#383bbd", 300, 120); 
+    // -------------------------------------- 
+    myBackground = new component(756, 445, "/images/trees_background-1.png", 0, 0, "image");
+    // -------------------------------------- 
     myGameArea.start();
 }
 
@@ -171,6 +178,10 @@ function updateGameArea() {
         }
     }
     myGameArea.clear();
+    // -------------------------------------- 
+    myBackground.speedX = -1;
+    // -------------------------------------- 
+
 
     // count the score with frameNo
     myGameArea.frameNo += 1;
@@ -215,6 +226,14 @@ function updateGameArea() {
     // update score
     myScore.text = "SCORE: " + myGameArea.frameNo;
     myScore.update();
+
+    // -------------------------------------- 
+    // update background ==> this code makes the player .png disappear
+/*
+     myBackground.newPos();
+    myBackground.update(); 
+*/
+    // -------------------------------------- 
 
     // update player position
     myGamePiece.newPos();
