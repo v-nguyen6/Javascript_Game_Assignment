@@ -42,16 +42,15 @@
 //  this.canvas.width = 756;
 //  this.canvas.height = 445;
 
-// create player variable
-var myGamePiece;
-// create obstacle
-var myObstacles = [];
-// keep track of score
-var myScore;
+var myGamePiece;        // create player variable
+var myBackground;       // create background 
+var myObstacles = [];   // create obstacles
+var myScore;            // keep track of score
 
 // create game area & player
 function startGame() {
-    myGamePiece = new component(50, 50, "/images/dinosaur_3_green_final.png", 50, 350, "image"); // just a box
+    myGamePiece = new component(50, 50, "/images/dinosaur_3_green_final.png", 50, 350, "image"); 
+    myBackground = new component(756, 445, "/images/tree_background-1.png", 0, 0, "background"); 
     myScore = new component("18px", "VT323", "white", 30, 430, "text");
     myObstacle = new component(50, 50, "#383bbd", 300, 120); // just a box
     myGameArea.start();
@@ -96,7 +95,7 @@ function component(width, height, color, x, y, type) {
     this.gamearea = myGameArea;
     this.type = type;
     // Image as player 
-    if (type == "image") {
+    if (type == "image" || type == "background") {
         this.image = new Image();
         this.image.src = color;
     }
@@ -113,17 +112,19 @@ function component(width, height, color, x, y, type) {
     this.update = function() {
         ctx = myGameArea.context;
         // test if component is "text" type
-        if (type == "image") {
-            ctx.drawImage(this.image, 
-                          this.x, 
-                          this.y, 
-                          this.width, 
-                          this.height); 
-        } else if (this.type == "text") {
+        if (type == "image" || type == "background") {
+            ctx.drawImage(this.image, this.x, this.y, this.width, this.height); 
+        } 
+        // check if the x position of the componnet has reached the end of the image...
+        if (type == "background") {
+            ctx.drawImage(this.image, this.x + this.width, this.y, this.width, this.height);
+        }
+        else if (this.type == "text") {
             ctx.font = this.width + " " + this.height;
             ctx.fillStyle = color;
             ctx.fillText(this.text, this.x, this.y);
-        } else {
+        } 
+        else {
             ctx.fillStyle = color;
             ctx.fillRect(this.x, this.y, this.width, this.height);
         }
@@ -132,6 +133,13 @@ function component(width, height, color, x, y, type) {
     this.newPos = function() {
         this.x += this.speedX;
         this.y += this.speedY;        
+        // if the x position of the component has reached the end of the image, 
+        // set the x position to 0
+        if (this.type == "background") {
+            if (this.x == -(this.width)) {
+                this.x = 0;
+            }
+        }
     }
     this.crashWith = function(otherobj) {
         var myleft = this.x;
@@ -163,6 +171,10 @@ function updateGameArea() {
         }
     }
     myGameArea.clear();
+    // make background move
+    myBackground.speedX = -1;  
+    myBackground.newPos();
+    myBackground.update();
 
     // count the score with frameNo
     myGameArea.frameNo += 1;
@@ -206,7 +218,7 @@ function updateGameArea() {
 <h3>&#10092; Your Mission &#10093;</h3>
 <p>Meteors are falling! Help your dinosaur avoid extinction by avoiding the falling meteors.</p>
 <h3>&#10092; Controls &#10093;</h3>
-<p>Left and right arrow keys to move. </p>
+<p>Left and right arrow keys to move. Up key to jump.</p>
 <footer>&copy; 2020 a Javascript Game by <a href="http://mbui.bcitwebdeveloper.ca/">Mina Bui</a> and <a href="http://vnguyen.bcitwebdeveloper.ca/">Vinson Nguyen</a>. </footer>
 
 </body>
