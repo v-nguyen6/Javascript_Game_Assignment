@@ -85,6 +85,7 @@ startOverButton.addEventListener('click', function(){
 // PART 2
 
 var myGamePiece;
+var myObstacle;
 var myObstacles = [];
 var myScore;
 var myScoreBG;
@@ -95,7 +96,7 @@ function startGame() {
     myGamePiece = new component(50, 50, "/images/dinosaur_3_green_final.png", 50, 350, "image"); 
     myScore = new component("30px", "VT323", "white", 30, 50, "text");
     myScoreBG = new component(190, 28, "#282830", 25, 28);
-    myObstacles = new component(50, 50, "/images/obstacle2.png", 300, 120, "image"); 
+    myObstacle = new component(50, 50, "/images/obstacle2.png", 300, 120, "image"); 
     myBackground = new component(756, 445, "/images/tree_background-1.png", 0, 0, "background");
     myGameArea.start();
 }
