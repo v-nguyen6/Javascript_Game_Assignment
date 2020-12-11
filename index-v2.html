@@ -7,36 +7,37 @@
 -->
 <head>
     <meta charset = "utf-8">
-    <meta name = "viewport" content = "width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>don't get extinct</title>
-    <link rel = "stylesheet" href = "styles/styles-v2.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="images/favicomatic/apple-touch-icon-57x57.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/favicomatic/apple-touch-icon-114x114.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/favicomatic/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/favicomatic/apple-touch-icon-144x144.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="images/favicomatic/apple-touch-icon-60x60.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="images/favicomatic/apple-touch-icon-120x120.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="images/favicomatic/apple-touch-icon-76x76.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="images/favicomatic/apple-touch-icon-152x152.png" />
-    <link rel="icon" type="image/png" href="images/favicomatic/favicon-196x196.png" sizes="196x196" />
-    <link rel="icon" type="image/png" href="images/favicomatic/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/png" href="images/favicomatic/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="images/favicomatic/favicon-16x16.png" sizes="16x16" />
-    <link rel="icon" type="image/png" href="images/favicomatic/favicon-128.png" sizes="128x128" />
-    <meta name="application-name" content="&nbsp;"/>
-    <meta name="msapplication-TileColor" content="#FFFFFF" />
-    <meta name="msapplication-TileImage" content="mstile-144x144.png" />
-    <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
-    <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
-    <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
-    <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+    <meta name = "viewport"                         content = "width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible"              content="ie=edge">
+    <title>dino dash</title>
+    <!-- styling / font -->
+    <link rel = "stylesheet"                        href = "styles/styles-v2.css">
+    <link rel="preconnect"                          href="https://fonts.gstatic.com">
+    <link rel="stylesheet"                          href="https://fonts.googleapis.com/css2?family=VT323&display=swap">
+    <!-- favicon -->
+    <link rel="apple-touch-icon-precomposed"        href="images/favicomatic/apple-touch-icon-57x57.png"    sizes="57x57" />
+    <link rel="apple-touch-icon-precomposed"        href="images/favicomatic/apple-touch-icon-114x114.png"  sizes="114x114" />
+    <link rel="apple-touch-icon-precomposed"        href="images/favicomatic/apple-touch-icon-72x72.png"    sizes="72x72" />
+    <link rel="apple-touch-icon-precomposed"        href="images/favicomatic/apple-touch-icon-144x144.png"  sizes="144x144" />
+    <link rel="apple-touch-icon-precomposed"        href="images/favicomatic/apple-touch-icon-60x60.png"    sizes="60x60" />
+    <link rel="apple-touch-icon-precomposed"        href="images/favicomatic/apple-touch-icon-120x120.png"  sizes="120x120" />
+    <link rel="apple-touch-icon-precomposed"        href="images/favicomatic/apple-touch-icon-76x76.png"    sizes="76x76" />
+    <link rel="apple-touch-icon-precomposed"        href="images/favicomatic/apple-touch-icon-152x152.png"  sizes="152x152" />
+    <link rel="icon" type="image/png"               href="images/favicomatic/favicon-196x196.png"           sizes="196x196" />
+    <link rel="icon" type="image/png"               href="images/favicomatic/favicon-96x96.png"             sizes="96x96" />
+    <link rel="icon" type="image/png"               href="images/favicomatic/favicon-32x32.png"             sizes="32x32" />
+    <link rel="icon" type="image/png"               href="images/favicomatic/favicon-16x16.png"             sizes="16x16" />
+    <link rel="icon" type="image/png"               href="images/favicomatic/favicon-128.png"               sizes="128x128" />
+    <meta name="application-name"                   content="&nbsp;"/>
+    <meta name="msapplication-TileColor"            content="#FFFFFF" />
+    <meta name="msapplication-TileImage"            content="mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo"      content="mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo"    content="mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo"      content="mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo"    content="mstile-310x310.png" />
 </head>
 
 <body onload="startGame()">
-
 <script>
 // made with the help of https://www.w3schools.com/graphics/game_intro.asp :)
 // note to self:
@@ -245,7 +246,7 @@ function updateGameArea() {
     }
     myGamePiece.newPos();                               // update player position
     myGamePiece.update();
-    myScore.text = "SCORE: " + myGameArea.frameNo;      // update score
+    myScore.text = "DINO-SCORE: " + myGameArea.frameNo;      // update score
     myScore.update();
     // -------------------------------------- 
     // update background ==> this code makes the player .png disappear
@@ -257,11 +258,14 @@ function updateGameArea() {
 </script>
 
 <!-- title and instructions-->
-<h1>Don't get extinct</h1>
+<h1>Dino Dash</h1>
+
 <h3>&#10092; Your Mission &#10093;</h3>
-<p>Meteors are falling! Help your dinosaur avoid extinction by avoiding the falling meteors.</p>
+<p>Just another day as a dinosaur. Help your buddy cross the forest (and maybe avoid extinction) by avoiding obstacles.</p>
+
 <h3>&#10092; Controls &#10093;</h3>
-<p>Left and right arrow keys to move. </p>
+<p>Arrow keys to move and jump.</p>
+
 <footer>&copy; 2020 a Javascript Game by <a href="http://mbui.bcitwebdeveloper.ca/">Mina Bui</a> and <a href="http://vnguyen.bcitwebdeveloper.ca/">Vinson Nguyen</a>. </footer>
 
 </body>
