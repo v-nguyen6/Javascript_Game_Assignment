@@ -37,30 +37,45 @@
     <meta name="msapplication-square310x310logo"    content="mstile-310x310.png" />
 </head>
 
-<body onload="startGame()">
+<!--<body onload="startGame()">-->
+<body>
+
+<!-- -------------------------------------- -->
+<div id="game-start-screen" class="game-start-screen">
+    <div id="startButtonDiv" class="startButtonDiv">
+        <button id="startButton" class="startButton" onclick="startGame()">Start</button>
+    </div>
+</div>
+<!-- -------------------------------------- -->
+
 <script>
 // made with the help of https://www.w3schools.com/graphics/game_intro.asp :)
 // note to self:
 //      this.canvas.width = 756;
 //      this.canvas.height = 445;
+// -------------------------------------- 
+
+// close window when button is pressed
+const startButton = document.getElementById("startButton")
+const gameStartScreen = document.getElementById("game-start-screen")
+
+// when user clicks "confirm selection", close screen and start game
+startButton.addEventListener('click', function(){
+    gameStartScreen.style.display = "none";
+});
 
 // declare variables
 var myGamePiece;
 var myObstacles = [];
 var myScore;
-// -------------------------------------- mina: i'm adding these lil dividers so i know what code to delete when it inevitably breaks
 var myBackground;
-// -------------------------------------- 
-
 
 // create game area & player
 function startGame() {
     myGamePiece = new component(50, 50, "/images/dinosaur_3_green_final.png", 50, 350, "image"); 
     myScore = new component("18px", "VT323", "white", 30, 430, "text");
     myObstacle = new component(50, 50, "#383bbd", 300, 120); 
-    // -------------------------------------- 
     myBackground = new component(756, 445, "/images/tree_background-1.png", 0, 0, "background");
-    // -------------------------------------- 
     myGameArea.start();
 }
 
@@ -86,6 +101,7 @@ var myGameArea = {
         window.addEventListener('keyup', function (e) {
             myGameArea.keys[e.keyCode] = (e.type == "keydown");            
         })
+
     },
     clear : function() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -223,7 +239,7 @@ function updateGameArea() {
         //gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
 
         //myObstacles.push(new component(100, height, "#383bbd", x, 0)); // top obstacle, not needed
-        myObstacles.push(new component(50, x-height, "#bd5938", x, height));
+        myObstacles.push(new component(50, x-height, "#7b38bd", x, height));
     }
     for (i = 0; i < myObstacles.length; i += 1) {
         myObstacles[i].x += -2;
@@ -259,6 +275,7 @@ function updateGameArea() {
 
 <h3>&#x2039; Controls &#x203A;</h3>
 <p>&#8592; &#8595; &#8594; keys to move and &#8593; to jump.</p>
+
 
 <footer>&copy; 2020 - Present. A Javascript Game by <a href="http://mbui.bcitwebdeveloper.ca/">Mina Bui</a> and <a href="http://vnguyen.bcitwebdeveloper.ca/">Vinson Nguyen</a>. </footer>
 
