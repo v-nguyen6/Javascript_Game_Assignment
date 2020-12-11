@@ -49,20 +49,12 @@
         <button id="startButton" class="startButton">Start</button>
     </div>
 </div>
-<div id="funButtonsDiv" class="funButtonsDiv">
-    <button id="settingsButton" class="settingsButton">&#x2039; Settings &#x203A;</button>
+<div id="settings" class="settings">
     <button id="darkModeButton" class="darkModeButton">Dark Mode: Off</button>
     <button id="partyModeButton" class="partyModeButton" title="warning: flashing lights">Party Mode: Off</button>
 </div>
 <div id="gameOverMessage" class="gameOverMessage">
-<<<<<<< HEAD
-    <!-- game over message with variable score is written here, in the script-->
-</div> 
-<!-- in a separate div, to not mess with the reset function -->
-<div id="gameOverMessage2" class="gameOverMessage2">
-=======
     <h3>Game Over :^(</h3>
->>>>>>> parent of c762399... fixed highscore thing
     <button id="startOverButton" class="startOverButton">Try Again?</button>
 </div> 
 
@@ -86,9 +78,6 @@ const settingsButton = document.getElementById("settingsButton");
 // when window loads, hide the "gameOverMessage" div.
 window.onload = function() {
     gameOverMessage.style.display = 'none';
-    darkModeButton.style.display = 'none';
-    partyModeButton.style.display = 'none';
-
 };
 
 // when user clicks "confirm selection", start game
@@ -123,30 +112,6 @@ partyModeButton.addEventListener('click', function() {
     }
 });
 
-// when user clicks on "show settings" button, show the two modes
-// note: game is also paused when settings is shown (and vice versa)
-settingsButton.addEventListener('click', function() {
-    if ((darkModeButton.style.display === "none") || (partyModeButton.style.display === "none"))  {
-        darkModeButton.style.display = "inline";
-        partyModeButton.style.display = "inline";
-        myGameArea.stop();
-    } else {
-        darkModeButton.style.display = "none";
-        partyModeButton.style.display = "none";
-        myGameArea.start();
-    }
-});
-
-// NOTE: the following code doesn't work. something with the else {} statement
-// also pausing when user presses space bar
-/* document.body.onkeyup = function(e){
-    if(e.keyCode == 32){
-        myGameArea.stop();
-    } else {
-        myGameArea.start();
-    }
-}
- */
 // =======================================================================================================
 // PART 2
 
@@ -324,7 +289,6 @@ function component(width, height, color, x, y, type) {
 
 // =======================================================================================================
 // PART 4
-var gameOverMessageDiv = document.getElementById('gameOverMessage');
 
 
 // calling clear() and update()
@@ -335,12 +299,9 @@ function updateGameArea() {
         // when player runs into obstacles, end the game and display "game over" message
         if (myGamePiece.crashWith(myObstacles[i])) {
             myGameArea.stop();
-            //document.getElementById('gameOverMessage').style.display = 'block';
-            //document.getElementById()
-            gameOverMessageDiv.innerHTML = 'Game Over ; ) -> Your score is:' + myGameArea.frameNo;
-            gameOverMessageDiv.style.display = 'block';
-            document.getElementById('darkModeButton').style.display = 'none';
-            document.getElementById('partyModeButton').style.display = 'none';
+            gameOverMessage.style.display = 'block';
+            darkModeButton.style.display = 'none';
+            partyModeButton.style.display = 'none';
             return;
         }
     }
@@ -350,14 +311,6 @@ function updateGameArea() {
     myBackground.update();
     myGameArea.frameNo += 1;        // count the score with frameNo
 
-    // send in obstacles of random sizes (need to work on this)
-/*     if (myGameArea.frameNo == 1 || everyinterval(150)) {
-        x = myGameArea.canvas.width;
-        minHeight = 350;
-        maxHeight = 450;
-        height = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
-        myObstacles.push(new component(150, x-height, "/images/obstacle2.png", x, height, "image"));
-    } */
     if (myGameArea.frameNo == 1 || everyinterval(150)) {
             x = myGameArea.canvas.width;
             minHeight = 80;

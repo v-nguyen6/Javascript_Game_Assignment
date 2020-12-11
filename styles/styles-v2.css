@@ -130,8 +130,7 @@ a:hover {
 }
 .gameOverMessage {
     text-align: center;
-    padding-top: 0px;
-    margin-top: 0px;
+    padding-top: 10px;
 }
 .startOverButton {
     background-color: #bd5938; 
@@ -157,10 +156,9 @@ a:hover {
     color: white;
 }
 
-.funButtonsDiv {
-    text-align: left;
+.settings {
+    text-align: center;
     margin-top: 20px;
-    padding-left: 100px;
 }
 .darkModeButton {
     background-color: transparent; 
