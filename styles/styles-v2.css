@@ -47,7 +47,14 @@ h1 {
     padding-top: 20px;
     font-size: 4em;
     line-height: 0px;
-    text-shadow: 7px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+}
+
+h3 {
+    font-size: 1.75em;
+}
+
+p {
+    font-size: 1.3em;
 }
 
 h3, p {
