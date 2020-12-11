@@ -163,9 +163,8 @@ a:hover {
 }
 
 .funButtonsDiv {
-    text-align: left;
+    text-align: center;
     margin-top: 20px;
-    padding-left: 100px;
 }
 .darkModeButton {
     background-color: transparent; 
