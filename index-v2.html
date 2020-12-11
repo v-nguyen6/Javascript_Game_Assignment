@@ -48,13 +48,11 @@
         <p>&#8592; &#8595; &#8594; keys to move and &#8593; to jump.</p>
         <button id="startButton" class="startButton" onclick="startGame()">Start</button>
     </div>
-<!-- --------------------------------------------------------     -->
-    <div id="gameOverMessage" class="gameOverMessage" onload="hideStartOver()">
-        <h3>Game Over &#9785;</h3>
-        <button id="startOverButton" class="startOverButton" onclick="startGame()">Start Over?</button>
-    </div> <!--
- -------------------------------------------------------- -->
 </div>
+<div id="gameOverMessage" class="gameOverMessage" onload="hideStartOver()">
+    <h3>Game Over &#9785;</h3>
+    <button id="startOverButton" class="startOverButton" onclick="startGame()">Start Over?</button>
+</div> 
 
 <script>
 // made with the help of https://www.w3schools.com/graphics/game_intro.asp :)
@@ -70,18 +68,15 @@ startButton.addEventListener('click', function(){
     gameStartScreen.style.display = "none";
 });
 
-/* -----------------------------------------------------------------------
-// when user clicks "start over?", restart game
-startOverButton.addEventListener('click', function(){
-    gameStartScreen.style.display = "block";
-}); 
-// try 2...
-*/
+// when DOM loads, hide the "gameOverMessage" div.
 function hideStartOver() {
     document.getElementById('gameOverMessage').style.display = 'none';
 }
-/*
------------------------------------------------------------------------ */
+
+// when user clicks "start over? :(", restart game
+startOverButton.addEventListener('click', function(){
+    gameOverMessage.style.display = "none";
+});
 
 // declare variables
 var myGamePiece;
@@ -193,9 +188,8 @@ function component(width, height, color, x, y, type) {
                 this.x = 0;
             }
         } 
-        this.hitBottom();                        // component to notify and detect when player hits the bottom
-        this.hitRight();                        // component to notify and detect when player hits the right 
-        this.hitLeft();                        // component to notify and detect when player hits the left
+        this.hitBottom();       
+        this.hitSides();                        // component to notify and detect when player hits the bottom 
     }
 
     // function to detect when player lands on the bottom of the canvas 
@@ -207,21 +201,18 @@ function component(width, height, color, x, y, type) {
         }
     }
 
-    // function to detect when player hits right side of canvas
-    this.hitRight = function() {
+    // function to detect when player hits sides on canvas
+    this.hitSides = function() {
         var rightScreen = myGameArea.canvas.width - this.width;
+        var leftScreen = this.width - myGameArea.canvas.width;
+
         if (this.x > rightScreen) {
             this.x = rightScreen;
         }
+
+        
     }
 
-    // function to detect when player hits right side of canvas
-    this.hitLeft = function() {
-        var leftScreen = myGameArea.canvas.width - 50;
-        if (this.x > leftScreen) {
-            this.x = leftScreen;
-        }
-    }
 
 
 
@@ -255,10 +246,8 @@ function updateGameArea() {
     for (i = 0; i < myObstacles.length; i += 1) {
         if (myGamePiece.crashWith(myObstacles[i])) {
             myGameArea.stop();
-            // ------------------------------------------------------------------------
-            // WHY ISN'T THIS WORKING AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+            // show game over message when player crashes into obstacle
             document.getElementById('gameOverMessage').style.display = 'block';
-            // ------------------------------------------------------------------------
             return;
         }
     }
@@ -273,7 +262,7 @@ function updateGameArea() {
     myGameArea.frameNo += 1;                           // count the score with frameNo
 
     // send in obstacles of random sizes (need to work on this)
-    if (myGameArea.frameNo == 1 || everyinterval(200)) {
+    if (myGameArea.frameNo == 1 || everyinterval(150)) {
         x = myGameArea.canvas.width;
         minHeight = 350;
         maxHeight = 450;
@@ -283,10 +272,10 @@ function updateGameArea() {
         //gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
 
         //myObstacles.push(new component(100, height, "#383bbd", x, 0)); // top obstacle, not needed
-        myObstacles.push(new component(50, x-height, "/images/obstacle2.png", x, height, "image"));
+        myObstacles.push(new component(50, x-height, "#7b38bd", x, height));
     }
     for (i = 0; i < myObstacles.length; i += 1) {
-        myObstacles[i].x += -3;
+        myObstacles[i].x += -2;
         myObstacles[i].update();
     }
 
