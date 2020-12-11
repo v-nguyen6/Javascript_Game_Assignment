@@ -222,7 +222,7 @@ function updateGameArea() {
         maxGap = 200;
         gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
 
-        myObstacles.push(new component(100, height, "#383bbd", x, 0));
+        //myObstacles.push(new component(100, height, "#383bbd", x, 0)); // top obstacle, not needed
         myObstacles.push(new component(100, x - height - gap, "#383bbd", x, height + gap));
     }
     for (i = 0; i < myObstacles.length; i += 1) {
