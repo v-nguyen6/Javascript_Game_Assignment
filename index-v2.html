@@ -49,10 +49,10 @@
         <button id="startButton" class="startButton">Start</button>
     </div>
 </div>
-
 <div id="funButtonsDiv" class="funButtonsDiv">
-    <button id="darkModeButton" class="darkModeButton" title="dark mode">On</button>
-    <button id="partyModeButton" class="partyModeButton" title="warning: flashing lights">Party?</button>
+    <button id="settingsButton" class="settingsButton">&#x2039; Settings &#x203A;</button>
+    <button id="darkModeButton" class="darkModeButton">Dark Mode: Off</button>
+    <button id="partyModeButton" class="partyModeButton" title="warning: flashing lights">Party Mode: Off</button>
 </div>
 <div id="gameOverMessage" class="gameOverMessage">
     <h3>Game Over &#9785;</h3>
@@ -69,13 +69,19 @@ const startButton = document.getElementById("startButton");
 const gameStartScreen = document.getElementById("game-start-screen");
 const startOverButton = document.getElementById("startOverButton");
 const gameOverMessage = document.getElementById("gameOverMessage");
+
+const theBody = document.getElementById("theBody");
 const darkModeButton = document.getElementById("darkModeButton");
 const partyModeButton = document.getElementById("partyModeButton");
-const theBody = document.getElementById("theBody");
+
+const settingsButton = document.getElementById("settingsButton");
 
 // when window loads, hide the "gameOverMessage" div.
 window.onload = function() {
     document.getElementById('gameOverMessage').style.display = 'none';
+    document.getElementById('darkModeButton').style.display = 'none';
+    document.getElementById('partyModeButton').style.display = 'none';
+
 };
 
 // when user clicks "confirm selection", start game
@@ -93,20 +99,31 @@ startOverButton.addEventListener('click', function(){
 // when user clicks dark mode button, change background to black (and vice versa)
 darkModeButton.addEventListener('click', function() {
     theBody.classList.toggle('dark-theme')
-    if (darkModeButton.innerHTML == "On") {
-        darkModeButton.innerHTML = "Off";
+    if (darkModeButton.innerHTML == "Dark Mode: Off") {
+        darkModeButton.innerHTML = "Dark Mode: On";
     } else {
-        darkModeButton.innerHTML = "On";
+        darkModeButton.innerHTML = "Dark Mode: Off";
     }
 });
 
 // when user clicks party mode button, change background to strobe lights until toggled off
 partyModeButton.addEventListener('click', function() {
     theBody.classList.toggle('party-theme')
-    if (partyModeButton.innerHTML == "Party?") {
-        partyModeButton.innerHTML = "Party!!!";
+    if (partyModeButton.innerHTML == "Party Mode: Off") {
+        partyModeButton.innerHTML = "Party Mode: On";
     } else {
-        partyModeButton.innerHTML = "Party?";
+        partyModeButton.innerHTML = "Party Mode: Off";
+    }
+});
+
+// when user clicks on "show settings" button, show the two modes
+settingsButton.addEventListener('click', function() {
+    if ((darkModeButton.style.display === "none") || (partyModeButton.style.display === "none"))  {
+        darkModeButton.style.display = "inline";
+        partyModeButton.style.display = "inline";
+    } else {
+        darkModeButton.style.display = "none";
+        partyModeButton.style.display = "none";
     }
 });
 
@@ -124,7 +141,7 @@ var myBackground;
 function startGame() {
     myGamePiece = new component(50, 50, "/images/dinosaur_3_green_final.png", 50, 350, "image"); 
     myScore = new component("30px", "VT323", "white", 30, 50, "text");
-    myScoreBG = new component(250, 28, "#282830", 25, 28);
+    myScoreBG = new component(240, 28, "#282830", 25, 28);
     myObstacle = new component(50, 50, "/images/obstacle2.png", 300, 120, "image"); 
     myBackground = new component(756, 445, "/images/tree_background-1.png", 0, 0, "background");
     myGameArea.start();
