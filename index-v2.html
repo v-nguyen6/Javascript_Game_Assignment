@@ -82,7 +82,7 @@ var myBackground;
 function startGame() {
     myGamePiece = new component(50, 50, "/images/dinosaur_3_green_final.png", 50, 350, "image"); 
     myScore = new component("18px", "VT323", "white", 30, 430, "text");
-    myObstacle = new component(50, 50, "#383bbd", 300, 120); 
+    myObstacle = new component(50, 50, "/images/meteor.png", 300, 120, "image"); 
     myBackground = new component(756, 445, "/images/tree_background-1.png", 0, 0, "background");
     myGameArea.start();
 }
@@ -248,7 +248,7 @@ function updateGameArea() {
         //gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
 
         //myObstacles.push(new component(100, height, "#383bbd", x, 0)); // top obstacle, not needed
-        myObstacles.push(new component(50, x-height, "#7b38bd", x, height));
+        myObstacles.push(new component(50, x-height, "/images/meteor.png", x, height, "image"));
     }
     for (i = 0; i < myObstacles.length; i += 1) {
         myObstacles[i].x += -2;
