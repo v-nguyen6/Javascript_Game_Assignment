@@ -52,7 +52,7 @@
 
 <div id="funButtonsDiv" class="funButtonsDiv">
     <button id="darkModeButton" class="darkModeButton" title="dark mode">On</button>
-    <button id="partyModeButton" class="partyModeButton" title="warning: flashing lights">Party Time?</button>
+    <button id="partyModeButton" class="partyModeButton" title="warning: flashing lights">Party?</button>
 </div>
 <div id="gameOverMessage" class="gameOverMessage">
     <h3>Game Over &#9785;</h3>
@@ -103,10 +103,10 @@ darkModeButton.addEventListener('click', function() {
 // when user clicks party mode button, change background to strobe lights until toggled off
 partyModeButton.addEventListener('click', function() {
     theBody.classList.toggle('party-theme')
-    if (partyModeButton.innerHTML == "Party Time?") {
-        partyModeButton.innerHTML = "Party Time!!!";
+    if (partyModeButton.innerHTML == "Party?") {
+        partyModeButton.innerHTML = "Party!!!";
     } else {
-        partyModeButton.innerHTML = "Party Time?";
+        partyModeButton.innerHTML = "Party?";
     }
 });
 
@@ -124,7 +124,7 @@ var myBackground;
 function startGame() {
     myGamePiece = new component(60, 40, "/images/dinosaur_1_green_final.png", 50, 350, "image"); 
     myScore = new component("30px", "VT323", "white", 30, 50, "text");
-    myScoreBG = new component(190, 28, "#282830", 25, 28);
+    myScoreBG = new component(250, 28, "#282830", 25, 28);
     myObstacle = new component(50, 50, "/images/obstacle2.png", 300, 120, "image"); 
     myBackground = new component(756, 445, "/images/tree_background-1.png", 0, 0, "background");
     myGameArea.start();
@@ -305,7 +305,8 @@ function updateGameArea() {
         myObstacles.push(new component(50, x-height, "/images/obstacle2.png", x, height, "image"));
     }
     for (i = 0; i < myObstacles.length; i += 1) {
-        myObstacles[i].x += -3;
+        //myObstacles[i].x += -2;       // control speed of obstacles => SLOW MODE
+        myObstacles[i].x += -6;         // control speed of obstacles => FAST MODE
         myObstacles[i].update();
     }
 
