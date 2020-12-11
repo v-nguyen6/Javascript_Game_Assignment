@@ -127,6 +127,9 @@ settingsButton.addEventListener('click', function() {
     }
 });
 
+// pausing game
+
+
 // =======================================================================================================
 // PART 2
 
@@ -304,6 +307,8 @@ function updateGameArea() {
         if (myGamePiece.crashWith(myObstacles[i])) {
             myGameArea.stop();
             document.getElementById('gameOverMessage').style.display = 'block';
+            document.getElementById('darkModeButton').style.display = 'none';
+            document.getElementById('partyModeButton').style.display = 'none';
             return;
         }
     }
