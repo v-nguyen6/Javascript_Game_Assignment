@@ -188,10 +188,10 @@ function component(width, height, color, x, y, type) {
                 this.x = 0;
             }
         } 
-        this.hitBottom();                      // component to notify and detect when player hits the bottom 
-        this.hitRight();                       // component to notify and detect when player hits the right
-        this.hitLeft();                        // component to notify and detect when player hits the left  
-    };
+        this.hitBottom();                        // component to notify and detect when player hits the bottom 
+        this.hitRight();                        // component to notify and detect when player hits the right
+        //this.hitLeft();                        // component to notify and detect when player hits the left  
+    }
 
     // function to detect when player lands on the bottom of the canvas 
     this.hitBottom = function() {
