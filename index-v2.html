@@ -37,7 +37,7 @@
     <meta name="msapplication-square310x310logo"    content="mstile-310x310.png" />
 </head>
 <!--=======================================================================================================-->
-<body onload="hideStartOver()">
+<body>
 
 <div id="game-start-screen" class="game-start-screen">
     <div id="startScreenDiv" class="startScreenDiv">
@@ -46,39 +46,41 @@
         <p>Just another day in the Mesozoic era... <br> Help your buddy cross the forest by avoiding obstacles.</p>
         <h3>&#x2039; Controls &#x203A;</h3>
         <p>&#8592; &#8595; &#8594; keys to move and &#8593; to jump.</p>
-        <button id="startButton" class="startButton" onclick="startGame()">Start</button>
+        <button id="startButton" class="startButton">Start</button>
     </div>
 </div>
 
-<div id="gameOverMessage" class="gameOverMessage" onload="hideStartOver()">
+<div id="gameOverMessage" class="gameOverMessage">
     <h3>Game Over &#9785;</h3>
-    <button id="startOverButton" class="startOverButton" onclick="startGame()">Try Again?</button>
-
+    <button id="startOverButton" class="startOverButton">Try Again?</button>
 </div> 
-<!--=======================================================================================================-->
-<script>                                                               // made with the help of W3Schools :)
 
+<!--=======================================================================================================-->
+
+<script>                                                               // made with the help of W3Schools :)
 // PART 1 - [START] & [GAME OVER]
 
 // close window when button is pressed
-const startButton = document.getElementById("startButton");             // START SCREEN
+const startButton = document.getElementById("startButton");
 const gameStartScreen = document.getElementById("game-start-screen");
-const startOverButton = document.getElementById("startOverButton");     // GAME OVER SCREEN
+const startOverButton = document.getElementById("startOverButton");
 const gameOverMessage = document.getElementById("gameOverMessage");
 
 // when user clicks "confirm selection", start game
 startButton.addEventListener('click', function(){
     gameStartScreen.style.display = "none";
+    startGame();
 });
 
-// when DOM loads, hide the "gameOverMessage" div.
-function hideStartOver() {
+// when window loads, hide the "gameOverMessage" div.
+window.onload = function() {
     document.getElementById('gameOverMessage').style.display = 'none';
-}
+};
 
 // when user clicks "start over? :(", restart game
 startOverButton.addEventListener('click', function(){
     gameOverMessage.style.display = "none";
+    window.location.reload();
 });
 
 // =======================================================================================================
@@ -221,7 +223,7 @@ function component(width, height, color, x, y, type) {
         }
     }
     */
-    
+
     function accelerate(n) {
         myGamePiece.gravity = n;
     }
