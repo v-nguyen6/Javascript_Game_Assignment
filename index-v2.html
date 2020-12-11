@@ -37,7 +37,7 @@
     <meta name="msapplication-square310x310logo"    content="mstile-310x310.png" />
 </head>
 <!--=======================================================================================================-->
-<body>
+<body id="theBody" class="theBody">
 
 <div id="game-start-screen" class="game-start-screen">
     <div id="startScreenDiv" class="startScreenDiv">
@@ -50,10 +50,19 @@
     </div>
 </div>
 
+<!-- just for fun... -->
+<div id="funButtonsDiv" class="funButtonsDiv">
+    <button id="darkModeButton" class="darkModeButton">On</button>
+    <button id="partyModeButton" class="partyModeButton">Party Time?</button>
+</div>
+<!-- end fun code -->
+
 <div id="gameOverMessage" class="gameOverMessage">
     <h3>Game Over &#9785;</h3>
     <button id="startOverButton" class="startOverButton">Try Again?</button>
 </div> 
+
+
 
 <!--=======================================================================================================-->
 
@@ -65,6 +74,14 @@ const startButton = document.getElementById("startButton");
 const gameStartScreen = document.getElementById("game-start-screen");
 const startOverButton = document.getElementById("startOverButton");
 const gameOverMessage = document.getElementById("gameOverMessage");
+const darkModeButton = document.getElementById("darkModeButton");
+const partyModeButton = document.getElementById("partyModeButton");
+const theBody = document.getElementById("theBody");
+
+// when window loads, hide the "gameOverMessage" div.
+window.onload = function() {
+    document.getElementById('gameOverMessage').style.display = 'none';
+};
 
 // when user clicks "confirm selection", start game
 startButton.addEventListener('click', function(){
@@ -72,15 +89,39 @@ startButton.addEventListener('click', function(){
     startGame();
 });
 
-// when window loads, hide the "gameOverMessage" div.
-window.onload = function() {
-    document.getElementById('gameOverMessage').style.display = 'none';
-};
-
 // when user clicks "start over? :(", restart game
 startOverButton.addEventListener('click', function(){
     gameOverMessage.style.display = "none";
     window.location.reload();
+});
+
+// when user clicks dark mode button, change background to black (and vice versa)
+darkModeButton.addEventListener('click', function() {
+    theBody.classList.toggle('dark-theme')
+    if (darkModeButton.innerHTML == "On") {
+        darkModeButton.innerHTML = "Off";
+    }
+    else {
+        darkModeButton.innerHTML = "On";
+    }
+});
+
+// when user clicks party mode button, change background to strobe lights until toggled off
+partyModeButton.addEventListener('click', function() {
+    if (partyModeButton.innerHTML == "Party Time?") {
+        partyModeButton.innerHTML = "Party Time!!!";
+        var i = 0;
+        function change() {
+            var doc = document.getElementById("theBody");
+            var color = ["#383bbd", "#bd38bd", "#38bd38", "#38bdbb"];
+            doc.style.backgroundColor = color[i];
+            i = (i + 1) % color.length;
+        }
+        setInterval(change, 200);
+        }
+    else {
+        partyModeButton.innerHTML = "Party Time?";
+    }
 });
 
 // =======================================================================================================
