@@ -87,8 +87,8 @@ var myBackground;
 // create game area & player
 function startGame() {
     myGamePiece = new component(50, 50, "/images/dinosaur_3_green_final.png", 50, 350, "image"); 
-    myScore = new component("18px", "VT323", "white", 30, 430, "text");
-    myObstacle = new component(50, 50, "#383bbd", 300, 120); 
+    myScore = new component("30px", "VT323", "white", 30, 50, "text");
+    myObstacle = new component(50, 50, "/images/obstacle2.png", 300, 120, "image"); 
     myBackground = new component(756, 445, "/images/tree_background-1.png", 0, 0, "background");
     myGameArea.start();
 }
@@ -188,7 +188,8 @@ function component(width, height, color, x, y, type) {
                 this.x = 0;
             }
         } 
-        this.hitBottom();                               // component to notify and detect when player hits the bottom 
+        this.hitBottom();       
+        this.hitSides();                        // component to notify and detect when player hits the bottom 
     }
 
     // function to detect when player lands on the bottom of the canvas 
@@ -199,6 +200,21 @@ function component(width, height, color, x, y, type) {
             this.gravitySpeed = 0;                                  // then stop player from moving (gravity = 0)
         }
     }
+
+    // function to detect when player hits sides on canvas
+    this.hitSides = function() {
+        var rightScreen = myGameArea.canvas.width - this.width;
+        var leftScreen = this.width - myGameArea.canvas.width;
+
+        if (this.x > rightScreen) {
+            this.x = rightScreen;
+        }
+
+        
+    }
+
+
+
 
     function accelerate(n) {
         myGamePiece.gravity = n;
