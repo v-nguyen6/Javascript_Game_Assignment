@@ -117,6 +117,7 @@ partyModeButton.addEventListener('click', function() {
 });
 
 // when user clicks on "show settings" button, show the two modes
+// note: game is also paused when settings is shown (and vice versa)
 settingsButton.addEventListener('click', function() {
     if ((darkModeButton.style.display === "none") || (partyModeButton.style.display === "none"))  {
         darkModeButton.style.display = "inline";
@@ -128,9 +129,6 @@ settingsButton.addEventListener('click', function() {
         myGameArea.start();
     }
 });
-
-// pausing game
-
 
 // =======================================================================================================
 // PART 2
