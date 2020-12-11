@@ -137,13 +137,12 @@ a:hover {
     background-color: #bd5938; 
     border: none;
     border-radius: 5px;
+    margin-top: 20px;
     color: white;
-    padding: 7px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 32px;
-    margin: 20px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
     text-transform: lowercase;
@@ -158,18 +157,18 @@ a:hover {
 
 .funButtonsDiv {
     text-align: left;
+    margin-top: 20px;
     padding-left: 100px;
 }
 .darkModeButton {
     background-color: transparent; 
     border: none;
+    margin-right: 5px;
     color: white;
-    padding: 7px 7px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 14px;
-    margin: 20px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
     text-transform: lowercase;
@@ -186,12 +185,10 @@ a:hover {
     background-color: transparent; 
     border: none;
     color: white;
-    padding: 7px 7px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 14px;
-    margin: 20px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
     text-transform: lowercase;
@@ -216,9 +213,8 @@ a:hover {
 .settingsButton {
     background-color: transparent; 
     border: none;
+    margin-right: 10px;
     color: #bd5938;
-    padding: 7px 7px;
-    margin: 20px 0px 0px 0px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
