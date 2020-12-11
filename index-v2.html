@@ -36,6 +36,8 @@
     <meta name="msapplication-wide310x150logo"      content="mstile-310x150.png" />
     <meta name="msapplication-square310x310logo"    content="mstile-310x310.png" />
 </head>
+<!---------------------------------------------------------------------------------------------------------->
+
 
 <body onload="hideStartOver()">
 <!-- start game screen -->
@@ -62,6 +64,7 @@
 // ----------------------------------------------------------------------------------------------------------
 // PART 1
 
+
 // close window when button is pressed
 const startButton = document.getElementById("startButton")                  // START SCREEN
 const gameStartScreen = document.getElementById("game-start-screen")
@@ -86,6 +89,7 @@ startOverButton.addEventListener('click', function(){
 
 // ----------------------------------------------------------------------------------------------------------
 // PART 2
+
 
 // declare variables
 var myGamePiece;
@@ -146,6 +150,7 @@ function everyinterval(n) {
 
 // ----------------------------------------------------------------------------------------------------------
 // PART 3 - COMPONENT CONSTRUCTOR FUNCTION
+
 
 function component(width, height, color, x, y, type) {
     this.gamearea = myGameArea;
@@ -250,6 +255,7 @@ function component(width, height, color, x, y, type) {
 
 // ----------------------------------------------------------------------------------------------------------
 // PART 4
+
 
 // calling clear() and update()
 function updateGameArea() {
