@@ -50,24 +50,19 @@
     </div>
 </div>
 
-<!-- just for fun... -->
 <div id="funButtonsDiv" class="funButtonsDiv">
     <button id="darkModeButton" class="darkModeButton" title="dark mode">On</button>
     <button id="partyModeButton" class="partyModeButton" title="warning: flashing lights">Party Time?</button>
 </div>
-<!-- end fun code -->
-
 <div id="gameOverMessage" class="gameOverMessage">
     <h3>Game Over &#9785;</h3>
     <button id="startOverButton" class="startOverButton">Try Again?</button>
 </div> 
 
-
-
 <!--=======================================================================================================-->
 
 <script>                                                               // made with the help of W3Schools :)
-// PART 1 - [START] & [GAME OVER]
+// PART 1 - buttons!!!
 
 // close window when button is pressed
 const startButton = document.getElementById("startButton");
@@ -98,11 +93,9 @@ startOverButton.addEventListener('click', function(){
 // when user clicks dark mode button, change background to black (and vice versa)
 darkModeButton.addEventListener('click', function() {
     theBody.classList.toggle('dark-theme')
-
     if (darkModeButton.innerHTML == "On") {
         darkModeButton.innerHTML = "Off";
-    }
-    else {
+    } else {
         darkModeButton.innerHTML = "On";
     }
 });
@@ -110,11 +103,9 @@ darkModeButton.addEventListener('click', function() {
 // when user clicks party mode button, change background to strobe lights until toggled off
 partyModeButton.addEventListener('click', function() {
     theBody.classList.toggle('party-theme')
-
     if (partyModeButton.innerHTML == "Party Time?") {
         partyModeButton.innerHTML = "Party Time!!!";
-    }
-    else {
+    } else {
         partyModeButton.innerHTML = "Party Time?";
     }
 });
