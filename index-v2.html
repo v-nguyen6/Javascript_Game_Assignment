@@ -149,6 +149,7 @@ var myObstacles = [];
 var myScore;
 var myScoreBG;
 var myBackground;
+var obstacleSpeedX = 6;
 
 // create the components - game area, player, score, music, obstacles...
 function startGame() {
@@ -214,27 +215,34 @@ function component(width, height, color, x, y, type) {
     this.gravity = 0.05; 
     this.gravitySpeed = 0;
     this.x = x;
-    this.y = y;    
+    this.y = y; 
+    this.bgx = x;   
     // handles drawing of component
     this.update = function() {      
         var ctx;
         ctx = myGameArea.context;
         // check if component is "image" or "background" type
-        if (type == "image" || type == "background") {
+        if (type == "image") {
             ctx.drawImage(this.image, this.x, this.y, this.width, this.height); 
-            if (type == "background") {
-                ctx.drawImage(this.image, this.x + this.width, this.y, this.width, this.height);
-            }
+           
+        
         // test if component is "text" type
         } else if (this.type == "text") {
             ctx.font = this.width + " " + this.height;
             ctx.fillStyle = color;
             ctx.fillText(this.text, this.x, this.y);
-        } 
-        else {
+        }  else {
             ctx.fillStyle = color;
+          
             ctx.fillRect(this.x, this.y, this.width, this.height);
         }
+
+        if (type == "background") {
+            //console.log(this.x);
+             ctx.drawImage(this.image, this.bgx, this.y, this.width, this.height); 
+             ctx.drawImage(this.image, this.bgx + this.width, this.y, this.width, this.height);
+        }
+       
     };
 
     // changes the component's position
@@ -242,16 +250,18 @@ function component(width, height, color, x, y, type) {
         this.gravitySpeed += this.gravity;              // gravity effects on the position components
         this.x += this.speedX;                          // updates for x position 
         this.y += this.speedY + this.gravitySpeed;      // gravity effects on the y coordinates 
+        this.bgx += this.speedX;
         
         // background looping 
         if (this.type == "background") {
-            if (this.x == -(this.width)) {
-                this.x = 0;
+            if (this.bgx == -(this.width)) {
+                this.bgx = 0;
             }
         } 
+
         this.hitBottom();                        // component to notify and detect when player hits the bottom 
         this.hitRight();                         // component to notify and detect when player hits the right
-        //this.hitLeft();                        // component to notify and detect when player hits the left  
+        this.hitLeft();                        // component to notify and detect when player hits the left  
     }
 
     // function to detect when player lands on the bottom of the canvas 
@@ -271,7 +281,7 @@ function component(width, height, color, x, y, type) {
         }
     };
 
-    /* ----- WHY DOES THIS BREAKK OUr BG ANIMATION1?!?!
+    
     // function to detect when player hits left of canvas
     this.hitLeft = function() {
         var leftScreen = myGameArea.canvas.width - myGameArea.canvas.width;
@@ -279,7 +289,7 @@ function component(width, height, color, x, y, type) {
             this.x = leftScreen;
         }
     }
-    */
+    
 
     function accelerate(n) {
         myGamePiece.gravity = n;
@@ -307,6 +317,8 @@ function component(width, height, color, x, y, type) {
 
 // =======================================================================================================
 // PART 4
+var gameOverMessageDiv = document.getElementById('gameOverMessage');
+
 
 // calling clear() and update()
 function updateGameArea() {
@@ -316,7 +328,10 @@ function updateGameArea() {
         // when player runs into obstacles, end the game and display "game over" message
         if (myGamePiece.crashWith(myObstacles[i])) {
             myGameArea.stop();
-            document.getElementById('gameOverMessage').style.display = 'block';
+            //document.getElementById('gameOverMessage').style.display = 'block';
+            //document.getElementById()
+            gameOverMessageDiv.innerHTML = 'Game Over ; ) -> Your score is:' + myGameArea.frameNo;
+            gameOverMessageDiv.style.display = 'block';
             document.getElementById('darkModeButton').style.display = 'none';
             document.getElementById('partyModeButton').style.display = 'none';
             return;
@@ -336,7 +351,7 @@ function updateGameArea() {
         height = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
         myObstacles.push(new component(150, x-height, "/images/obstacle2.png", x, height, "image"));
     } */
-        if (myGameArea.frameNo == 1 || everyinterval(150)) {
+    if (myGameArea.frameNo == 1 || everyinterval(150)) {
             x = myGameArea.canvas.width;
             minHeight = 80;
             maxHeight = 110;
@@ -346,9 +361,15 @@ function updateGameArea() {
             gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
             myObstacles.push(new component(100, height, "/images/obstacle2.png", x, height + gap, "image"));
     }
+
     for (i = 0; i < myObstacles.length; i += 1) {
         //myObstacles[i].x += -2;       // control speed of obstacles => SLOW MODE
-        myObstacles[i].x += -6;         // control speed of obstacles => FAST MODE
+         
+        if(everyinterval(500)){
+            obstacleSpeedX += 20;
+        }
+        myObstacles[i].x += -(obstacleSpeedX);
+                // control speed of obstacles => FAST MODE
         myObstacles[i].update();
     }
 
