@@ -223,7 +223,7 @@ function updateGameArea() {
         //gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
 
         //myObstacles.push(new component(100, height, "#383bbd", x, 0)); // top obstacle, not needed
-        myObstacles.push(new component(50, x-height, "#383bbd", x, height));
+        myObstacles.push(new component(50, x-height, "#bd5938", x, height));
     }
     for (i = 0; i < myObstacles.length; i += 1) {
         myObstacles[i].x += -2;
@@ -232,16 +232,16 @@ function updateGameArea() {
 
     // move player when arrow keys are pressed
     if (myGameArea.keys && myGameArea.keys[37]) {       // left arrow key
-        myGamePiece.speedX = -3; 
+        myGamePiece.speedX = -2; 
     }
     if (myGameArea.keys && myGameArea.keys[39]) {       // right arrow key
-        myGamePiece.speedX = 3; 
+        myGamePiece.speedX = 2; 
     }
     if (myGameArea.keys && myGameArea.keys[38]) {       // top arrow key
         myGamePiece.speedY = -4; 
     }
     if (myGameArea.keys && myGameArea.keys[40]) {       // bottom arrow key
-        myGamePiece.speedY = 3;
+        myGamePiece.speedY = 2;
     }
     myGamePiece.newPos();                               // update player position
     myGamePiece.update();
