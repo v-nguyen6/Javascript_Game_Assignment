@@ -14,8 +14,10 @@ triadic:                #bd38bd, #38bd38            (magenta, green)
 tetradic:               #383bbd, #bd38bd, #bdbd38   (blue, magenta, greenish-yellow)
 
 background credits: https://ansimuz.itch.io/parallax-forest 
+
 -------------------------------------------------------------------------------------- 
-*/
+PART 1: basic site styling */
+
 /* main selectors */
 
 canvas {
@@ -82,7 +84,8 @@ a:hover {
     transition-duration: 0.4s;
 }
 
-/* -------------------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------------------- 
+PART 2: GAME START AND GAME OVER SCREENS */
 
 /* .class selectors */
 
@@ -116,7 +119,7 @@ a:hover {
     text-decoration: none;
     display: inline-block;
     font-size: 32px;
-    margin: 20px 2px;
+    margin: 40px 2px 2px 0px;
     transition-duration: 0.4s;
     cursor: pointer;
     text-transform: lowercase;
@@ -156,6 +159,9 @@ a:hover {
     color: white;
 }
 
+/* -------------------------------------------------------------------------------------- 
+PART 3: DARK MODE AND PARTY MODE BUTTONS */
+
 .settings {
     text-align: center;
     margin-top: 20px;
@@ -181,6 +187,7 @@ a:hover {
 #theBody.dark-theme {
     background-color: black;
 }
+
 .partyModeButton {
     background-color: transparent; 
     border: none;
@@ -209,18 +216,4 @@ a:hover {
     -webkit-animation-name: partyTime;  
     -webkit-animation-iteration-count: infinite;  
     -webkit-animation-duration: 2s; 
-}
-.settingsButton {
-    background-color: transparent; 
-    border: none;
-    margin-right: 10px;
-    color: #bd5938;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 18px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    text-transform: lowercase;
-    font-family: 'VT323', monospace;
 }
