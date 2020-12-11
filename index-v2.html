@@ -89,6 +89,8 @@ var myObstacles = [];
 var myScore;
 var myScoreBG;
 var myBackground;
+var ctx;
+var i;
 
 // create the components - game area, player, score, music, obstacles...
 function startGame() {
@@ -189,7 +191,7 @@ function component(width, height, color, x, y, type) {
             }
         } 
         this.hitBottom();                        // component to notify and detect when player hits the bottom 
-        this.hitRight();                        // component to notify and detect when player hits the right
+        this.hitRight();                         // component to notify and detect when player hits the right
         //this.hitLeft();                        // component to notify and detect when player hits the left  
     }
 
@@ -249,7 +251,7 @@ function component(width, height, color, x, y, type) {
 
 // calling clear() and update()
 function updateGameArea() {
-    var x, y;
+    var x, y, height, minHeight, maxHeight;
     for (i = 0; i < myObstacles.length; i += 1) {
         // when player runs into obstacles, end the game and display "game over" message
         if (myGamePiece.crashWith(myObstacles[i])) {
