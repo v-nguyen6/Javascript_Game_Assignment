@@ -121,9 +121,11 @@ settingsButton.addEventListener('click', function() {
     if ((darkModeButton.style.display === "none") || (partyModeButton.style.display === "none"))  {
         darkModeButton.style.display = "inline";
         partyModeButton.style.display = "inline";
+        myGameArea.stop();
     } else {
         darkModeButton.style.display = "none";
         partyModeButton.style.display = "none";
+        myGameArea.start();
     }
 });
 

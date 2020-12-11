@@ -139,10 +139,12 @@ a:hover {
     border-radius: 5px;
     margin-top: 20px;
     color: white;
+    padding: 7px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 32px;
+    margin: 20px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
     text-transform: lowercase;
