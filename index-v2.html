@@ -61,10 +61,10 @@
 // PART 1 - [START] & [GAME OVER]
 
 // close window when button is pressed
-const startButton = document.getElementById("startButton")             // START SCREEN
-const gameStartScreen = document.getElementById("game-start-screen")
-const startOverButton = document.getElementById("startOverButton")     // GAME OVER SCREEN
-const gameOverMessage = document.getElementById("gameOverMessage")
+const startButton = document.getElementById("startButton");             // START SCREEN
+const gameStartScreen = document.getElementById("game-start-screen");
+const startOverButton = document.getElementById("startOverButton");     // GAME OVER SCREEN
+const gameOverMessage = document.getElementById("gameOverMessage");
 
 // when user clicks "confirm selection", start game
 startButton.addEventListener('click', function(){
@@ -87,6 +87,7 @@ startOverButton.addEventListener('click', function(){
 var myGamePiece;
 var myObstacles = [];
 var myScore;
+var myScoreBG;
 var myBackground;
 
 // create the components - game area, player, score, music, obstacles...
@@ -94,7 +95,7 @@ function startGame() {
     myGamePiece = new component(50, 50, "/images/dinosaur_3_green_final.png", 50, 350, "image"); 
     myScore = new component("30px", "VT323", "white", 30, 50, "text");
     myScoreBG = new component(190, 28, "#282830", 25, 28);
-    myObstacle = new component(50, 50, "/images/obstacle2.png", 300, 120, "image"); 
+    myObstacles = new component(50, 50, "/images/obstacle2.png", 300, 120, "image"); 
     myBackground = new component(756, 445, "/images/tree_background-1.png", 0, 0, "background");
     myGameArea.start();
 }
@@ -114,11 +115,11 @@ var myGameArea = {
         window.addEventListener('keydown', function (e) {
             myGameArea.keys = (myGameArea.keys || []);
             myGameArea.keys[e.keyCode] = (e.type == "keydown");
-        })
+        });
         // if key is no longer pressed...
         window.addEventListener('keyup', function (e) {
             myGameArea.keys[e.keyCode] = (e.type == "keydown");            
-        })
+        });
     },
     clear : function() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -126,7 +127,7 @@ var myGameArea = {
     stop : function() {
         clearInterval(this.interval);
     }
-}
+};
 
 // function used to update and loop through the frames of the animation 
 function everyinterval(n) {
@@ -173,7 +174,7 @@ function component(width, height, color, x, y, type) {
             ctx.fillStyle = color;
             ctx.fillRect(this.x, this.y, this.width, this.height);
         }
-    }
+    };
 
     // changes the component's position
     this.newPos = function() {
@@ -190,7 +191,7 @@ function component(width, height, color, x, y, type) {
         this.hitBottom();                      // component to notify and detect when player hits the bottom 
         this.hitRight();                       // component to notify and detect when player hits the right
         this.hitLeft();                        // component to notify and detect when player hits the left  
-    }
+    };
 
     // function to detect when player lands on the bottom of the canvas 
     this.hitBottom = function() {
@@ -199,7 +200,7 @@ function component(width, height, color, x, y, type) {
             this.y = bottomScreen;                                  // if the bottom(y) of player is equal to bottom of the screen
             this.gravitySpeed = 0;                                  // then stop player from moving (gravity = 0)
         }
-    }
+    };
 
     // function to detect when player hits right of canvas
     this.hitRight = function() {
@@ -207,7 +208,7 @@ function component(width, height, color, x, y, type) {
         if (this.x > rightScreen) {
             this.x = rightScreen;
         }
-    }
+    };
 
     /* ----- WHY DOES THIS BREAKK OUT BG ANIMATION1?!?!
     // function to detect when player hits left of canvas
@@ -240,7 +241,7 @@ function component(width, height, color, x, y, type) {
                 crash = false;
         }
         return crash;
-    }
+    };
 }
 
 // =======================================================================================================
