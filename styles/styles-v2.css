@@ -111,11 +111,13 @@ a:hover {
         margin-right: auto;
         margin-top: 50px;
 }
-.startButtonDiv {
+.startButtonDiv,
+.gameOverMessage {
     text-align: center;
     padding-top: 170px;
 }
-.startButton {
+.startButton,
+.startOverButton {
     background-color: #bd5938; 
     border: none;
     border-radius: 5px;
@@ -134,7 +136,8 @@ a:hover {
     border: 2px solid white;
 }
 
-.startButton:hover {
+.startButton:hover,
+.startOverButton:hover {
     background-color: #bd9c38;
     color: white;
 } 

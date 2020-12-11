@@ -37,32 +37,40 @@
     <meta name="msapplication-square310x310logo"    content="mstile-310x310.png" />
 </head>
 
-<!--<body onload="startGame()">-->
 <body>
 
-<!-- -------------------------------------- -->
 <div id="game-start-screen" class="game-start-screen">
+    <!-- begin game -->
     <div id="startButtonDiv" class="startButtonDiv">
         <button id="startButton" class="startButton" onclick="startGame()">Start</button>
     </div>
+<!-- --------------------------------------------------------     
+    <div id="gameOverMessage" class="gameOverMessage" onload="hideStartOver()">
+        <h3>Game Over &#9785;</h3>
+        <button id="startOverButton" class="startOverButton" onclick="startGame()">Start Over?</button>
+    </div> 
+ -------------------------------------------------------- -->
 </div>
-<!-- -------------------------------------- -->
 
 <script>
 // made with the help of https://www.w3schools.com/graphics/game_intro.asp :)
-// note to self:
-//      this.canvas.width = 756;
-//      this.canvas.height = 445;
-// -------------------------------------- 
 
 // close window when button is pressed
 const startButton = document.getElementById("startButton")
+const startOverButton = document.getElementById("startOverButton")
 const gameStartScreen = document.getElementById("game-start-screen")
 
-// when user clicks "confirm selection", close screen and start game
+// when user clicks "confirm selection", start game
 startButton.addEventListener('click', function(){
     gameStartScreen.style.display = "none";
 });
+
+/* -----------------------------------------------------------------------
+// when user clicks "start over?", restart game
+startOverButton.addEventListener('click', function(){
+    gameStartScreen.style.display = "block";
+}); 
+----------------------------------------------------------------------- */
 
 // declare variables
 var myGamePiece;
