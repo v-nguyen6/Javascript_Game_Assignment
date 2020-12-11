@@ -74,10 +74,8 @@ const gameOverMessage = document.getElementById("gameOverMessage");
 const gameOverMessage2 = document.getElementById("gameOverMessage2");
 
 const theBody = document.getElementById("theBody");
-const funButtonsDiv = document.getElementById("funButtonsDiv");
 const darkModeButton = document.getElementById("darkModeButton");
 const partyModeButton = document.getElementById("partyModeButton");
-
 
 const settingsButton = document.getElementById("settingsButton");
 
@@ -337,7 +335,6 @@ function updateGameArea() {
             gameOverMessage.innerHTML = '<h3 id="#gameOverH3">Game Over :^(</h3><p>Your score is ' + myGameArea.frameNo + '.';
             gameOverMessage.style.display = 'block';
             gameOverMessage2.style.display = 'block';
-            funButtonsDiv.style.display = 'none';
             darkModeButton.style.display = 'none';
             partyModeButton.style.display = 'none';
             return;
