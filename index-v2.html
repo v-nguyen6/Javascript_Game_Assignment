@@ -52,7 +52,7 @@
 
 <div id="funButtonsDiv" class="funButtonsDiv">
     <button id="darkModeButton" class="darkModeButton" title="dark mode">On</button>
-    <button id="partyModeButton" class="partyModeButton" title="warning: flashing lights">Party Time?</button>
+    <button id="partyModeButton" class="partyModeButton" title="warning: flashing lights">Party?</button>
 </div>
 <div id="gameOverMessage" class="gameOverMessage">
     <h3>Game Over &#9785;</h3>
@@ -103,10 +103,10 @@ darkModeButton.addEventListener('click', function() {
 // when user clicks party mode button, change background to strobe lights until toggled off
 partyModeButton.addEventListener('click', function() {
     theBody.classList.toggle('party-theme')
-    if (partyModeButton.innerHTML == "Party Time?") {
-        partyModeButton.innerHTML = "Party Time!!!";
+    if (partyModeButton.innerHTML == "Party?") {
+        partyModeButton.innerHTML = "Party!!!";
     } else {
-        partyModeButton.innerHTML = "Party Time?";
+        partyModeButton.innerHTML = "Party?";
     }
 });
 
@@ -305,7 +305,8 @@ function updateGameArea() {
         myObstacles.push(new component(50, x-height, "/images/obstacle2.png", x, height, "image"));
     }
     for (i = 0; i < myObstacles.length; i += 1) {
-        myObstacles[i].x += -2;
+        //myObstacles[i].x += -2;       // control speed of obstacles => SLOW MODE
+        myObstacles[i].x += -6;         // control speed of obstacles => FAST MODE
         myObstacles[i].update();
     }
 
