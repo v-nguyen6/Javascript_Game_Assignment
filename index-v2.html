@@ -52,8 +52,8 @@
 
 <!-- just for fun... -->
 <div id="funButtonsDiv" class="funButtonsDiv">
-    <button id="darkModeButton" class="darkModeButton">On</button>
-    <button id="partyModeButton" class="partyModeButton">Party Time?</button>
+    <button id="darkModeButton" class="darkModeButton" title="dark mode">On</button>
+    <button id="partyModeButton" class="partyModeButton" title="warning: flashing lights">Party Time?</button>
 </div>
 <!-- end fun code -->
 
@@ -98,6 +98,7 @@ startOverButton.addEventListener('click', function(){
 // when user clicks dark mode button, change background to black (and vice versa)
 darkModeButton.addEventListener('click', function() {
     theBody.classList.toggle('dark-theme')
+
     if (darkModeButton.innerHTML == "On") {
         darkModeButton.innerHTML = "Off";
     }
@@ -108,17 +109,11 @@ darkModeButton.addEventListener('click', function() {
 
 // when user clicks party mode button, change background to strobe lights until toggled off
 partyModeButton.addEventListener('click', function() {
+    theBody.classList.toggle('party-theme')
+
     if (partyModeButton.innerHTML == "Party Time?") {
         partyModeButton.innerHTML = "Party Time!!!";
-        var i = 0;
-        function change() {
-            var doc = document.getElementById("theBody");
-            var color = ["#383bbd", "#bd38bd", "#38bd38", "#38bdbb"];
-            doc.style.backgroundColor = color[i];
-            i = (i + 1) % color.length;
-        }
-        setInterval(change, 200);
-        }
+    }
     else {
         partyModeButton.innerHTML = "Party Time?";
     }

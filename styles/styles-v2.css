@@ -198,3 +198,15 @@ a:hover {
     background-color: #bd9c38;
     color: white;
 }
+@-webkit-keyframes partyTime {  
+    0% { background-color: #383bbd; }
+    50% { background-color: #bd38bd; }
+    51% { background-color: #38bd38; }
+    100% { background-color: #38bdbb; }
+  }
+#theBody.party-theme {
+    background-color: black;
+    -webkit-animation-name: partyTime;  
+    -webkit-animation-iteration-count: infinite;  
+    -webkit-animation-duration: 1s; 
+}
