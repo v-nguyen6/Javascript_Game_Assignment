@@ -206,8 +206,9 @@ function component(width, height, color, x, y, type) {
                 this.x = 0;
             }
         } 
-        this.hitBottom();       
-        this.hitSides();                        // component to notify and detect when player hits the bottom 
+        this.hitBottom();                        // component to notify and detect when player hits the bottom 
+        this.hitRight();                        // component to notify and detect when player hits the right
+        this.hitLeft();                       // component to notify and detect when player hits the left  
     }
 
     // function to detect when player lands on the bottom of the canvas 
@@ -219,15 +220,25 @@ function component(width, height, color, x, y, type) {
         }
     }
 
-    // function to detect when player hits sides on canvas
-    this.hitSides = function() {
+    // function to detect when player hits right of canvas
+    this.hitRight = function() {
         var rightScreen = myGameArea.canvas.width - this.width;
-        var leftScreen = this.width - myGameArea.canvas.width;
-
         if (this.x > rightScreen) {
             this.x = rightScreen;
         }
     }
+
+    // function to detect when player hits left of canvas
+    this.hitLeft = function() {
+        //var leftScreen = this.width - myGameArea.canvas.width;
+        var leftScreen = 0;
+        if (this.x < leftScreen) {
+            this.x = leftScreen;
+        }
+    }
+
+    
+
 
     function accelerate(n) {
         myGamePiece.gravity = n;
