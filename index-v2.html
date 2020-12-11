@@ -249,7 +249,7 @@ function updateGameArea() {
     myGameArea.frameNo += 1;                           // count the score with frameNo
 
     // send in obstacles of random sizes (need to work on this)
-    if (myGameArea.frameNo == 1 || everyinterval(150)) {
+    if (myGameArea.frameNo == 1 || everyinterval(200)) {
         x = myGameArea.canvas.width;
         minHeight = 350;
         maxHeight = 450;
@@ -262,7 +262,7 @@ function updateGameArea() {
         myObstacles.push(new component(50, x-height, "/images/obstacle2.png", x, height, "image"));
     }
     for (i = 0; i < myObstacles.length; i += 1) {
-        myObstacles[i].x += -2;
+        myObstacles[i].x += -3;
         myObstacles[i].update();
     }
 
