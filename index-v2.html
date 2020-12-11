@@ -49,7 +49,7 @@ var myGamePiece;
 var myObstacles = [];
 var myScore;
 // -------------------------------------- mina: i'm adding these lil dividers so i know what code to delete when it inevitably breaks
-//var myBackground;
+var myBackground;
 // -------------------------------------- 
 
 
@@ -59,7 +59,7 @@ function startGame() {
     myScore = new component("18px", "VT323", "white", 30, 430, "text");
     myObstacle = new component(50, 50, "#383bbd", 300, 120); 
     // -------------------------------------- 
-    //myBackground = new component(756, 445, "/images/trees_background-1.png", 0, 0, "background");
+    myBackground = new component(756, 445, "/images/tree_background-1.png", 0, 0, "background");
     // -------------------------------------- 
     myGameArea.start();
 }
@@ -108,7 +108,7 @@ function component(width, height, color, x, y, type) {
     this.gamearea = myGameArea;
     this.type = type;
 
-    if (type == "image") {          // Image as player 
+    if (type == "image" || type == "background") {          // Image as player AND background
         this.image = new Image();
         this.image.src = color;
     }
@@ -127,20 +127,13 @@ function component(width, height, color, x, y, type) {
         ctx = myGameArea.context;
 
         // check if component is "image" type
-         if (type == "image") {
+        if (type == "image" || type == "background") {
             ctx.drawImage(this.image, this.x, this.y, this.width, this.height); 
-        }  
-        // -------------------------------------- 
-        /* if (type == "image" || type == "background") {
-            ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
-            if (type == "background") {
-                ctx.drawImage(this.image, this.x + this.width, this.y, this.width, this.height);
-            } */
-        // -------------------------------------- 
-
-
+        if (type == "background") {
+            ctx.drawImage(this.image, this.x + this.width, this.y, this.width, this.height);
+        }
         // test if component is "text" type
-        else if (this.type == "text") {
+        } else if (this.type == "text") {
             ctx.font = this.width + " " + this.height;
             ctx.fillStyle = color;
             ctx.fillText(this.text, this.x, this.y);
@@ -151,18 +144,19 @@ function component(width, height, color, x, y, type) {
             ctx.fillRect(this.x, this.y, this.width, this.height);
         }
     }
+
     // changes the component's position
     this.newPos = function() {
         this.gravitySpeed += this.gravity;              // gravity effects on the position components
         this.x += this.speedX;                          // updates for x position 
         this.y += this.speedY + this.gravitySpeed;      // gravity effects on the y coordinates 
-        // -------------------------------------- 
-        /* if (this.type == "background") {
+        
+        // background looping 
+        if (this.type == "background") {
             if (this.x == -(this.width)) {
                 this.x = 0;
             }
-        } */
-        // -------------------------------------- 
+        } 
         this.hitBottom();                               // component to notify and detect when player hits the bottom 
     }
 
@@ -209,10 +203,13 @@ function updateGameArea() {
         }
     }
     myGameArea.clear();
-    // -------------------------------------- 
-    //myBackground.speedX = -1;
-    // -------------------------------------- 
-
+    
+    // background looping update
+    myBackground.speedX = -1;
+    
+    myBackground.newPos();    
+    myBackground.update();
+    
     myGameArea.frameNo += 1;                           // count the score with frameNo
 
     // send in obstacles of random sizes (need to work on this)
@@ -250,11 +247,6 @@ function updateGameArea() {
     myGamePiece.update();
     myScore.text = "DINO-SCORE: " + myGameArea.frameNo; // update score
     myScore.update();
-    // -------------------------------------- 
-    // update background ==> this code makes the player .png disappear
-    //myBackground.newPos();
-    //myBackground.update(); 
-    // -------------------------------------- 
 }
 
 </script>
