@@ -58,7 +58,8 @@
 </div> 
 
 <script>
-// made with the help of https://www.w3schools.com/graphics/game_intro.asp :)
+// made with the help of W3Schools
+// https://www.w3schools.com/graphics/game_intro.asp :)
 
 
 // ----------------------------------------------------------------------------------------------------------
@@ -200,6 +201,7 @@ function component(width, height, color, x, y, type) {
         this.x += this.speedX;                          // updates for x position 
         this.y += this.speedY + this.gravitySpeed;      // gravity effects on the y coordinates 
         
+        
         // background looping 
         if (this.type == "background") {
             if (this.x == -(this.width)) {
@@ -208,7 +210,7 @@ function component(width, height, color, x, y, type) {
         } 
         this.hitBottom();                        // component to notify and detect when player hits the bottom 
         this.hitRight();                        // component to notify and detect when player hits the right
-        this.hitLeft();                       // component to notify and detect when player hits the left  
+        this.hitLeft();                        // component to notify and detect when player hits the left  
     }
 
     // function to detect when player lands on the bottom of the canvas 
@@ -228,15 +230,16 @@ function component(width, height, color, x, y, type) {
         }
     }
 
-    /* --- WHY DOES THIS MESS UP OUR BACKGROUND ANIMATION?!?!?!?
+    /* ----- WHY DOES THIS BREAKK OUT BG ANIMATION1?!?!
     // function to detect when player hits left of canvas
     this.hitLeft = function() {
-        var leftScreen = 0;
+        var leftScreen = myGameArea.canvas.width - myGameArea.canvas.width;
         if (this.x < leftScreen) {
             this.x = leftScreen;
         }
     }
     */
+    
 
     function accelerate(n) {
         myGamePiece.gravity = n;
@@ -327,7 +330,6 @@ function updateGameArea() {
     myScore.text = "DINO-SCORE: " + myGameArea.frameNo; // update score
     myScoreBG.update();
     myScore.update();
-    
 }
 
 </script>
