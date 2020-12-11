@@ -112,12 +112,38 @@ a:hover {
         margin-right: auto;
         margin-top: 60px;
 }
-.startButtonDiv,
-.gameOverMessage {
+.startButtonDiv {
     text-align: center;
     padding-top: 170px;
 }
-.startButton,
+.startButton{
+    background-color: #bd5938; 
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 32px;
+    margin: 20px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    text-transform: lowercase;
+    font-family: 'VT323', monospace;
+    bottom: 0;
+    border: 2px solid white;
+}
+
+.startButton:hover {
+    background-color: #bd9c38;
+    color: white;
+} 
+
+.gameOverMessage {
+    text-align: center;
+}
+
 .startOverButton {
     background-color: #bd5938; 
     border: none;
@@ -137,7 +163,6 @@ a:hover {
     border: 2px solid white;
 }
 
-.startButton:hover,
 .startOverButton:hover {
     background-color: #bd9c38;
     color: white;

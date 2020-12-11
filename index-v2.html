@@ -44,13 +44,11 @@
     <div id="startButtonDiv" class="startButtonDiv">
         <button id="startButton" class="startButton" onclick="startGame()">Start</button>
     </div>
-<!-- --------------------------------------------------------     -->
-    <div id="gameOverMessage" class="gameOverMessage" onload="hideStartOver()">
-        <h3>Game Over &#9785;</h3>
-        <button id="startOverButton" class="startOverButton" onclick="startGame()">Start Over?</button>
-    </div> <!--
- -------------------------------------------------------- -->
 </div>
+<div id="gameOverMessage" class="gameOverMessage" onload="hideStartOver()">
+    <h3>Game Over &#9785;</h3>
+    <button id="startOverButton" class="startOverButton" onclick="startGame()">Start Over?</button>
+</div> 
 
 <script>
 // made with the help of https://www.w3schools.com/graphics/game_intro.asp :)
@@ -66,18 +64,15 @@ startButton.addEventListener('click', function(){
     gameStartScreen.style.display = "none";
 });
 
-/* -----------------------------------------------------------------------
-// when user clicks "start over?", restart game
-startOverButton.addEventListener('click', function(){
-    gameStartScreen.style.display = "block";
-}); 
-// try 2...
-*/
+// when DOM loads, hide the "gameOverMessage" div.
 function hideStartOver() {
     document.getElementById('gameOverMessage').style.display = 'none';
 }
-/*
------------------------------------------------------------------------ */
+
+// when user clicks "start over? :(", restart game
+startOverButton.addEventListener('click', function(){
+    gameOverMessage.style.display = "none";
+});
 
 // declare variables
 var myGamePiece;
@@ -89,7 +84,7 @@ var myBackground;
 function startGame() {
     myGamePiece = new component(50, 50, "/images/dinosaur_3_green_final.png", 50, 350, "image"); 
     myScore = new component("18px", "VT323", "white", 30, 430, "text");
-    myObstacle = new component(50, 50, "/images/obstacle2.png", 300, 120, "image"); 
+    myObstacle = new component(50, 50, "#383bbd", 300, 120); 
     myBackground = new component(756, 445, "/images/tree_background-1.png", 0, 0, "background");
     myGameArea.start();
 }
@@ -231,10 +226,8 @@ function updateGameArea() {
     for (i = 0; i < myObstacles.length; i += 1) {
         if (myGamePiece.crashWith(myObstacles[i])) {
             myGameArea.stop();
-            // ------------------------------------------------------------------------
-            // WHY ISN'T THIS WORKING AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+            // show game over message when player crashes into obstacle
             document.getElementById('gameOverMessage').style.display = 'block';
-            // ------------------------------------------------------------------------
             return;
         }
     }
@@ -249,7 +242,7 @@ function updateGameArea() {
     myGameArea.frameNo += 1;                           // count the score with frameNo
 
     // send in obstacles of random sizes (need to work on this)
-    if (myGameArea.frameNo == 1 || everyinterval(200)) {
+    if (myGameArea.frameNo == 1 || everyinterval(150)) {
         x = myGameArea.canvas.width;
         minHeight = 350;
         maxHeight = 450;
@@ -259,10 +252,10 @@ function updateGameArea() {
         //gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
 
         //myObstacles.push(new component(100, height, "#383bbd", x, 0)); // top obstacle, not needed
-        myObstacles.push(new component(50, x-height, "/images/obstacle2.png", x, height, "image"));
+        myObstacles.push(new component(50, x-height, "#7b38bd", x, height));
     }
     for (i = 0; i < myObstacles.length; i += 1) {
-        myObstacles[i].x += -3;
+        myObstacles[i].x += -2;
         myObstacles[i].update();
     }
 
