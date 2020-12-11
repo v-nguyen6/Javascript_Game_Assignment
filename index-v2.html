@@ -89,8 +89,6 @@ var myObstacles = [];
 var myScore;
 var myScoreBG;
 var myBackground;
-var ctx;
-var i;
 
 // create the components - game area, player, score, music, obstacles...
 function startGame() {
@@ -159,6 +157,7 @@ function component(width, height, color, x, y, type) {
     this.y = y;    
     // handles drawing of component
     this.update = function() {      
+        var ctx;
         ctx = myGameArea.context;
         // check if component is "image" or "background" type
         if (type == "image" || type == "background") {
@@ -251,7 +250,8 @@ function component(width, height, color, x, y, type) {
 
 // calling clear() and update()
 function updateGameArea() {
-    var x, y, height, minHeight, maxHeight;
+    //var x,y;
+    var x, y, height, minHeight, maxHeight, i;
     for (i = 0; i < myObstacles.length; i += 1) {
         // when player runs into obstacles, end the game and display "game over" message
         if (myGamePiece.crashWith(myObstacles[i])) {
