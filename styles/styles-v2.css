@@ -45,7 +45,9 @@ body {
 h1 {
     text-align: center;
     padding-top: 20px;
-    font-size: 3em;
+    font-size: 4em;
+    line-height: 0px;
+    text-shadow: 7px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
 }
 
 h3, p {
