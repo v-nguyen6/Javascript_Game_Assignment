@@ -5,7 +5,6 @@
 
 -------------------------------------------------------------------------------------- 
                                     [color schemes]
-                                
 background color:       #bd9c38                     (brown)
 complimentary:          #383bbd                     (blue)
 monochromatic:          #a37a51                     (brown)
@@ -14,12 +13,11 @@ split complimentary:    #7b38bd, #38bdbb            (purple, teal)
 triadic:                #bd38bd, #38bd38            (magenta, green)
 tetradic:               #383bbd, #bd38bd, #bdbd38   (blue, magenta, greenish-yellow)
 -------------------------------------------------------------------------------------- 
-
 background credits: https://ansimuz.itch.io/parallax-forest 
 
-note from mina: i commented out any code that weren't being used in the alt version */
 
 /* main selectors */
+
 canvas {
     background-image: url('../images/tree_background-1.png'); 
     background-color: black;
@@ -32,6 +30,7 @@ canvas {
     margin-right: auto;
     display: block;
 }
+
 body {
     font-family: 'VT323', monospace;
     background-color: #282830;
@@ -42,6 +41,18 @@ body {
     text-transform: lowercase;
 }
 
+footer {
+    background-color: transparent;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    color: rgb(211,211,211);
+    text-align: center;
+}
+
+/* headings, p */
 h1 {
     text-align: center;
     padding-top: 100px;
@@ -70,23 +81,7 @@ h2, h3, h4, h5, h6 {
     color: #bd5938;
 }
 
-/* h4 for the character selection screen */
-/* h4 {
-    margin-top: 20px;
-    color: #bd5938;
-} */
-
-footer {
-    background-color: transparent;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 10px;
-    color: rgb(211,211,211);
-    text-align: center;
-}
-
+/* links */
 a, a:visited, a:active {
     text-decoration: none;
     color: #bd5938;
@@ -101,6 +96,7 @@ a:hover {
 
 /* .class selectors */
 
+/* game start screen */
 .game-start-screen {
         background-image: url('../images/tree_background-1.png');
         background-color: black;
@@ -113,6 +109,7 @@ a:hover {
         margin-right: auto;
         margin-top: 60px;
 }
+
 .startScreenDiv {
     text-align: center;
     padding-top: 0px;
@@ -121,6 +118,7 @@ a:hover {
     background-color: rgba(0,0,0,0.5);
     border-radius: 25px;
 }
+
 .startButton{
     background-color: #bd5938; 
     border: none;
@@ -145,6 +143,7 @@ a:hover {
     color: white;
 } 
 
+/* start over screen */
 .gameOverMessage {
     text-align: center;
 }
@@ -172,128 +171,3 @@ a:hover {
     background-color: #bd9c38;
     color: white;
 } 
-/* .wrapper {
-    padding-left: 20px;
-    padding-right: 20px;
-}
- .game-container {
-    background-image: url('../images/tree_background-1.png');
-    background-color: black;
-    background-size: 100%;
-    border-radius: 25px;
-    position: relative;
-    height: 445px;
-    width: 756px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 50px;
-}  */
-
-/* -------------------------------------------------------------------------------------- */
-
-/* Main Character */
-/* #player {
-    width: auto; 
-    height: 100px;
-    bottom: -15px;
-    position: absolute;
-}
-
-#player img {
-    width: auto;
-    height: 50px;
-    display: block;
-}
- */
-/* -------------------------------------------------------------------------------------- */
-
-/* game images */
-/* img {
-    height: 3.5%;
-    width: 4%;
-} */
-
-/* character selection */
-
-/* .gallery {
-    position: absolute;
-    text-align: center;
-    background-color: rgba(255,255,255,0.9);
-    border: 3px solid #bd5938;
-    border-radius: 25px;
-    padding: 10px 20px;
-    left: 190px;
-    top: 50px;
-    height: 325px;
-}
-
-.thumbnails img {
-    border: 1px solid transparent;
-    width: 40px;
-    height: 100%;
-    padding: 1px;
-    margin: 0 10px 10px 0;
-}
-.thumbnails img:hover {
-    cursor: pointer;
-}
-.thumbnails img,
-.preview img {
-    border: 1px solid transparent;
-    padding: 1px;
-    width: 40px;
-    height: 100%;
-} */
-
-/* character selection - button effects */
-
-/* .char-button-div {
-    position: absolute;
-    bottom: 15px;
-    left: 97px;
-}
-.char-button {
-    background-color: #bd5938; 
-    border: none;
-    border-radius: 5px;
-    color: white;
-    padding: 7px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 20px 2px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    text-transform: lowercase;
-    font-family: 'VT323', monospace;
-    bottom: 0;
-  }
-  
-  .char-button:hover {
-    background-color: #bd9c38;
-    color: white;
-  } */
-
-/* -------------------------------------------------------------------------------------- */
-
-/* stats */
-
-/* .stats {
-    position: absolute;
-    color: white;
-    font-size: 18px;
-    bottom: -50px;
-    padding-left: 20px;
-} */
-
-/* -------------------------------------------------------------------------------------- */
-
-/* falling asteroids */
-/* #m1 {
-    position: absolute;
-    left: 240px;
-    top: 0px;
-    height: 20px;
-}
- */

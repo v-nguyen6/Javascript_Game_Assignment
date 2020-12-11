@@ -38,8 +38,8 @@
 </head>
 
 <body onload="hideStartOver()">
+<!-- start game screen -->
 <div id="game-start-screen" class="game-start-screen">
-    <!-- begin game -->
     <div id="startScreenDiv" class="startScreenDiv">
         <h1>Dino Dash</h1>
         <h3>&#x2039; Your Mission &#x203A;</h3>
@@ -49,6 +49,7 @@
         <button id="startButton" class="startButton" onclick="startGame()">Start</button>
     </div>
 </div>
+<!-- game over message -->
 <div id="gameOverMessage" class="gameOverMessage" onload="hideStartOver()">
     <h3>Game Over &#9785;</h3>
     <button id="startOverButton" class="startOverButton" onclick="startGame()">Start Over?</button>
@@ -56,6 +57,10 @@
 
 <script>
 // made with the help of https://www.w3schools.com/graphics/game_intro.asp :)
+
+
+// ----------------------------------------------------------------------------------------------------------
+// PART 1
 
 // close window when button is pressed
 const startButton = document.getElementById("startButton")                  // START SCREEN
@@ -77,6 +82,10 @@ function hideStartOver() {
 startOverButton.addEventListener('click', function(){
     gameOverMessage.style.display = "none";
 });
+
+
+// ----------------------------------------------------------------------------------------------------------
+// PART 2
 
 // declare variables
 var myGamePiece;
@@ -134,7 +143,10 @@ function everyinterval(n) {
   return false;
 }
 
-// the component constructor function...
+
+// ----------------------------------------------------------------------------------------------------------
+// PART 3 - COMPONENT CONSTRUCTOR FUNCTION
+
 function component(width, height, color, x, y, type) {
     this.gamearea = myGameArea;
     this.type = type;
@@ -209,12 +221,7 @@ function component(width, height, color, x, y, type) {
         if (this.x > rightScreen) {
             this.x = rightScreen;
         }
-
-        
     }
-
-
-
 
     function accelerate(n) {
         myGamePiece.gravity = n;
@@ -239,6 +246,10 @@ function component(width, height, color, x, y, type) {
         return crash;
     }
 }
+
+
+// ----------------------------------------------------------------------------------------------------------
+// PART 4
 
 // calling clear() and update()
 function updateGameArea() {
@@ -302,16 +313,6 @@ function updateGameArea() {
 }
 
 </script>
-
-<!-- title and instructions-->
-<!-- <div id="game-instructions" class="game-instructions">
-    <h1>Dino Dash</h1>
-    <h3>&#x2039; Your Mission &#x203A;</h3>
-    <p>Just another day in the Mesozoic era... <br> Help your buddy cross the forest (and maybe avoid extinction) by avoiding obstacles.</p>
-    <h3>&#x2039; Controls &#x203A;</h3>
-    <p>&#8592; &#8595; &#8594; keys to move and &#8593; to jump.</p>
-</div> -->
-
 <footer>&copy; 2020 - Present. A Javascript Game by <a href="http://mbui.bcitwebdeveloper.ca/">Mina Bui</a> and <a href="http://vnguyen.bcitwebdeveloper.ca/">Vinson Nguyen</a>. </footer>
 </body>
 </html>
