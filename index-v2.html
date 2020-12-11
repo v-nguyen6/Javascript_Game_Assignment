@@ -1,20 +1,20 @@
 <!doctype html>
 <html lang = "en">
 <!-- 	
-        author: mina, vinson
-        date: 2020-11-24
-        title: twd - javascript game - html
+    author: mina, vinson
+    date: 2020-11-24
+    title: twd - javascript game - html
 -->
 <head>
     <meta charset = "utf-8">
     <meta name = "viewport"                         content = "width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible"              content="ie=edge">
     <title>dino dash</title>
-    <!-- styling / font -->
+
     <link rel = "stylesheet"                        href = "styles/styles-v2.css">
     <link rel="preconnect"                          href="https://fonts.gstatic.com">
+
     <link rel="stylesheet"                          href="https://fonts.googleapis.com/css2?family=VT323&display=swap">
-    <!-- favicon -->
     <link rel="apple-touch-icon-precomposed"        href="images/favicomatic/apple-touch-icon-57x57.png"    sizes="57x57" />
     <link rel="apple-touch-icon-precomposed"        href="images/favicomatic/apple-touch-icon-114x114.png"  sizes="114x114" />
     <link rel="apple-touch-icon-precomposed"        href="images/favicomatic/apple-touch-icon-72x72.png"    sizes="72x72" />
@@ -37,10 +37,8 @@
     <meta name="msapplication-square310x310logo"    content="mstile-310x310.png" />
 </head>
 <!---------------------------------------------------------------------------------------------------------->
-
-
 <body onload="hideStartOver()">
-<!-- start game screen -->
+
 <div id="game-start-screen" class="game-start-screen">
     <div id="startScreenDiv" class="startScreenDiv">
         <h1>Dino Dash</h1>
@@ -51,24 +49,21 @@
         <button id="startButton" class="startButton" onclick="startGame()">Start</button>
     </div>
 </div>
-<!-- game over message -->
+
 <div id="gameOverMessage" class="gameOverMessage" onload="hideStartOver()">
     <h3>Game Over &#9785;</h3>
-    <button id="startOverButton" class="startOverButton" onclick="startGame()">Start Over?</button>
+    <button id="startOverButton" class="startOverButton" onclick="startGame()">Try Again?</button>
+
 </div> 
+<!---------------------------------------------------------------------------------------------------------->
+<script>                                                               // made with the help of W3Schools :)
 
-<script>
-// made with the help of W3Schools :)
-
-
-// ----------------------------------------------------------------------------------------------------------
 // PART 1 - [START] & [GAME OVER]
 
-
 // close window when button is pressed
-const startButton = document.getElementById("startButton")                  // START SCREEN
+const startButton = document.getElementById("startButton")             // START SCREEN
 const gameStartScreen = document.getElementById("game-start-screen")
-const startOverButton = document.getElementById("startOverButton")          // GAME OVER SCREEN
+const startOverButton = document.getElementById("startOverButton")     // GAME OVER SCREEN
 const gameOverMessage = document.getElementById("gameOverMessage")
 
 // when user clicks "confirm selection", start game
@@ -86,18 +81,15 @@ startOverButton.addEventListener('click', function(){
     gameOverMessage.style.display = "none";
 });
 
-
 // ----------------------------------------------------------------------------------------------------------
 // PART 2
 
-
-// declare variables
 var myGamePiece;
 var myObstacles = [];
 var myScore;
 var myBackground;
 
-// create game area & player
+// create the components - game area, player, score, music, obstacles...
 function startGame() {
     myGamePiece = new component(50, 50, "/images/dinosaur_3_green_final.png", 50, 350, "image"); 
     myScore = new component("30px", "VT323", "white", 30, 50, "text");
@@ -108,29 +100,25 @@ function startGame() {
 }
 
 var myGameArea = {
+    // create the canvas component (the game area)
     canvas : document.createElement("canvas"),
     start : function() {
         this.canvas.width = 756;
         this.canvas.height = 445;
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
-
         this.frameNo = 0;       
-
         // update the display every 20ms by adding an interval to function every 20ms
         this.interval = setInterval(updateGameArea, 20);
-
         // check if keys are pressed by checking key code => insert an element when key is pressed
         window.addEventListener('keydown', function (e) {
             myGameArea.keys = (myGameArea.keys || []);
             myGameArea.keys[e.keyCode] = (e.type == "keydown");
         })
-
         // if key is no longer pressed...
         window.addEventListener('keyup', function (e) {
             myGameArea.keys[e.keyCode] = (e.type == "keydown");            
         })
-
     },
     clear : function() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -148,46 +136,39 @@ function everyinterval(n) {
   return false;
 }
 
-
 // ----------------------------------------------------------------------------------------------------------
 // PART 3 - COMPONENT CONSTRUCTOR FUNCTION
-
 
 function component(width, height, color, x, y, type) {
     this.gamearea = myGameArea;
     this.type = type;
-
-    if (type == "image" || type == "background") {          // Image as player AND background
+    if (type == "image" || type == "background") {
         this.image = new Image();
         this.image.src = color;
     }
     this.width = width;
     this.height = height;
-    this.speedX = 0;                // speed indicators
+    this.speedX = 0;
     this.speedY = 0;    
-    this.gravity = 0.05;            // gravity indicator 
+    this.gravity = 0.05; 
     this.gravitySpeed = 0;
-
-    // controls x . y coordinates
     this.x = x;
     this.y = y;    
-
-    this.update = function() {      // handles drawing of component
+    // handles drawing of component
+    this.update = function() {      
         ctx = myGameArea.context;
-
-        // check if component is "image" type
+        // check if component is "image" or "background" type
         if (type == "image" || type == "background") {
             ctx.drawImage(this.image, this.x, this.y, this.width, this.height); 
-        if (type == "background") {
-            ctx.drawImage(this.image, this.x + this.width, this.y, this.width, this.height);
-        }
+            if (type == "background") {
+                ctx.drawImage(this.image, this.x + this.width, this.y, this.width, this.height);
+            }
         // test if component is "text" type
         } else if (this.type == "text") {
             ctx.font = this.width + " " + this.height;
             ctx.fillStyle = color;
             ctx.fillText(this.text, this.x, this.y);
         } 
-
         else {
             ctx.fillStyle = color;
             ctx.fillRect(this.x, this.y, this.width, this.height);
@@ -200,15 +181,14 @@ function component(width, height, color, x, y, type) {
         this.x += this.speedX;                          // updates for x position 
         this.y += this.speedY + this.gravitySpeed;      // gravity effects on the y coordinates 
         
-        
         // background looping 
         if (this.type == "background") {
             if (this.x == -(this.width)) {
                 this.x = 0;
             }
         } 
-        this.hitBottom();                        // component to notify and detect when player hits the bottom 
-        this.hitRight();                        // component to notify and detect when player hits the right
+        this.hitBottom();                      // component to notify and detect when player hits the bottom 
+        this.hitRight();                       // component to notify and detect when player hits the right
         this.hitLeft();                        // component to notify and detect when player hits the left  
     }
 
@@ -239,7 +219,6 @@ function component(width, height, color, x, y, type) {
     }
     */
     
-
     function accelerate(n) {
         myGamePiece.gravity = n;
     }
@@ -264,31 +243,25 @@ function component(width, height, color, x, y, type) {
     }
 }
 
-
 // ----------------------------------------------------------------------------------------------------------
 // PART 4
-
 
 // calling clear() and update()
 function updateGameArea() {
     var x, y;
     for (i = 0; i < myObstacles.length; i += 1) {
+        // when player runs into obstacles, end the game and display "game over" message
         if (myGamePiece.crashWith(myObstacles[i])) {
             myGameArea.stop();
-            // show game over message when player crashes into obstacle
             document.getElementById('gameOverMessage').style.display = 'block';
             return;
         }
     }
     myGameArea.clear();
-    
-    // background looping update
-    myBackground.speedX = -1;
-    
+    myBackground.speedX = -1;       // background looping update
     myBackground.newPos();    
     myBackground.update();
-    
-    myGameArea.frameNo += 1;                           // count the score with frameNo
+    myGameArea.frameNo += 1;        // count the score with frameNo
 
     // send in obstacles of random sizes (need to work on this)
     if (myGameArea.frameNo == 1 || everyinterval(150)) {
@@ -296,11 +269,6 @@ function updateGameArea() {
         minHeight = 350;
         maxHeight = 450;
         height = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
-        //minGap = 500;
-        //maxGap = 200;
-        //gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
-
-        //myObstacles.push(new component(100, height, "#383bbd", x, 0)); // top obstacle, not needed
         myObstacles.push(new component(50, x-height, "/images/obstacle2.png", x, height, "image"));
     }
     for (i = 0; i < myObstacles.length; i += 1) {
