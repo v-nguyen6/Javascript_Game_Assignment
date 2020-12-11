@@ -55,12 +55,17 @@
     <button id="partyModeButton" class="partyModeButton" title="warning: flashing lights">Party Mode: Off</button>
 </div>
 <div id="gameOverMessage" class="gameOverMessage">
+<<<<<<< HEAD
     <!-- game over message with variable score is written here, in the script-->
 </div> 
 <!-- in a separate div, to not mess with the reset function -->
 <div id="gameOverMessage2" class="gameOverMessage2">
+=======
+    <h3>Game Over :^(</h3>
+>>>>>>> parent of c762399... fixed highscore thing
     <button id="startOverButton" class="startOverButton">Try Again?</button>
 </div> 
+
 <!--=======================================================================================================-->
 
 <script>                                                               // made with the help of W3Schools :)
@@ -71,7 +76,6 @@ const startButton = document.getElementById("startButton");
 const gameStartScreen = document.getElementById("game-start-screen");
 const startOverButton = document.getElementById("startOverButton");
 const gameOverMessage = document.getElementById("gameOverMessage");
-const gameOverMessage2 = document.getElementById("gameOverMessage2");
 
 const theBody = document.getElementById("theBody");
 const darkModeButton = document.getElementById("darkModeButton");
@@ -82,7 +86,6 @@ const settingsButton = document.getElementById("settingsButton");
 // when window loads, hide the "gameOverMessage" div.
 window.onload = function() {
     gameOverMessage.style.display = 'none';
-    gameOverMessage2.style.display = 'none';
     darkModeButton.style.display = 'none';
     partyModeButton.style.display = 'none';
 
@@ -97,7 +100,6 @@ startButton.addEventListener('click', function(){
 // when user clicks "start over? :(", restart game
 startOverButton.addEventListener('click', function(){
     gameOverMessage.style.display = "none";
-    gameOverMessage2.style.display = 'none';
     window.location.reload();
 });
 
@@ -322,6 +324,8 @@ function component(width, height, color, x, y, type) {
 
 // =======================================================================================================
 // PART 4
+var gameOverMessageDiv = document.getElementById('gameOverMessage');
+
 
 // calling clear() and update()
 function updateGameArea() {
@@ -331,12 +335,12 @@ function updateGameArea() {
         // when player runs into obstacles, end the game and display "game over" message
         if (myGamePiece.crashWith(myObstacles[i])) {
             myGameArea.stop();
-            //gameOverMessage.innerHTML = 'Game Over ; ) -> Your score is:' + myGameArea.frameNo;
-            gameOverMessage.innerHTML = '<h3 id="#gameOverH3">Game Over :^(</h3><p>Your score is ' + myGameArea.frameNo + '.';
-            gameOverMessage.style.display = 'block';
-            gameOverMessage2.style.display = 'block';
-            darkModeButton.style.display = 'none';
-            partyModeButton.style.display = 'none';
+            //document.getElementById('gameOverMessage').style.display = 'block';
+            //document.getElementById()
+            gameOverMessageDiv.innerHTML = 'Game Over ; ) -> Your score is:' + myGameArea.frameNo;
+            gameOverMessageDiv.style.display = 'block';
+            document.getElementById('darkModeButton').style.display = 'none';
+            document.getElementById('partyModeButton').style.display = 'none';
             return;
         }
     }
