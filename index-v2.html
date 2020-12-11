@@ -7,36 +7,37 @@
 -->
 <head>
     <meta charset = "utf-8">
-    <meta name = "viewport" content = "width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>don't get extinct</title>
-    <link rel = "stylesheet" href = "styles/styles-v2.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="images/favicomatic/apple-touch-icon-57x57.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/favicomatic/apple-touch-icon-114x114.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/favicomatic/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/favicomatic/apple-touch-icon-144x144.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="images/favicomatic/apple-touch-icon-60x60.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="images/favicomatic/apple-touch-icon-120x120.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="images/favicomatic/apple-touch-icon-76x76.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="images/favicomatic/apple-touch-icon-152x152.png" />
-    <link rel="icon" type="image/png" href="images/favicomatic/favicon-196x196.png" sizes="196x196" />
-    <link rel="icon" type="image/png" href="images/favicomatic/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/png" href="images/favicomatic/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="images/favicomatic/favicon-16x16.png" sizes="16x16" />
-    <link rel="icon" type="image/png" href="images/favicomatic/favicon-128.png" sizes="128x128" />
-    <meta name="application-name" content="&nbsp;"/>
-    <meta name="msapplication-TileColor" content="#FFFFFF" />
-    <meta name="msapplication-TileImage" content="mstile-144x144.png" />
-    <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
-    <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
-    <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
-    <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+    <meta name = "viewport"                         content = "width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible"              content="ie=edge">
+    <title>dino dash</title>
+    <!-- styling / font -->
+    <link rel = "stylesheet"                        href = "styles/styles-v2.css">
+    <link rel="preconnect"                          href="https://fonts.gstatic.com">
+    <link rel="stylesheet"                          href="https://fonts.googleapis.com/css2?family=VT323&display=swap">
+    <!-- favicon -->
+    <link rel="apple-touch-icon-precomposed"        href="images/favicomatic/apple-touch-icon-57x57.png"    sizes="57x57" />
+    <link rel="apple-touch-icon-precomposed"        href="images/favicomatic/apple-touch-icon-114x114.png"  sizes="114x114" />
+    <link rel="apple-touch-icon-precomposed"        href="images/favicomatic/apple-touch-icon-72x72.png"    sizes="72x72" />
+    <link rel="apple-touch-icon-precomposed"        href="images/favicomatic/apple-touch-icon-144x144.png"  sizes="144x144" />
+    <link rel="apple-touch-icon-precomposed"        href="images/favicomatic/apple-touch-icon-60x60.png"    sizes="60x60" />
+    <link rel="apple-touch-icon-precomposed"        href="images/favicomatic/apple-touch-icon-120x120.png"  sizes="120x120" />
+    <link rel="apple-touch-icon-precomposed"        href="images/favicomatic/apple-touch-icon-76x76.png"    sizes="76x76" />
+    <link rel="apple-touch-icon-precomposed"        href="images/favicomatic/apple-touch-icon-152x152.png"  sizes="152x152" />
+    <link rel="icon" type="image/png"               href="images/favicomatic/favicon-196x196.png"           sizes="196x196" />
+    <link rel="icon" type="image/png"               href="images/favicomatic/favicon-96x96.png"             sizes="96x96" />
+    <link rel="icon" type="image/png"               href="images/favicomatic/favicon-32x32.png"             sizes="32x32" />
+    <link rel="icon" type="image/png"               href="images/favicomatic/favicon-16x16.png"             sizes="16x16" />
+    <link rel="icon" type="image/png"               href="images/favicomatic/favicon-128.png"               sizes="128x128" />
+    <meta name="application-name"                   content="&nbsp;"/>
+    <meta name="msapplication-TileColor"            content="#FFFFFF" />
+    <meta name="msapplication-TileImage"            content="mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo"      content="mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo"    content="mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo"      content="mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo"    content="mstile-310x310.png" />
 </head>
 
 <body onload="startGame()">
-
 <script>
 // made with the help of https://www.w3schools.com/graphics/game_intro.asp :)
 // note to self:
@@ -47,12 +48,19 @@
 var myGamePiece;
 var myObstacles = [];
 var myScore;
+// -------------------------------------- mina: i'm adding these lil dividers so i know what code to delete when it inevitably breaks
+//var myBackground;
+// -------------------------------------- 
+
 
 // create game area & player
 function startGame() {
     myGamePiece = new component(50, 50, "/images/dinosaur_3_green_final.png", 50, 350, "image"); 
     myScore = new component("18px", "VT323", "white", 30, 430, "text");
     myObstacle = new component(50, 50, "#383bbd", 300, 120); 
+    // -------------------------------------- 
+    //myBackground = new component(756, 445, "/images/trees_background-1.png", 0, 0, "background");
+    // -------------------------------------- 
     myGameArea.start();
 }
 
@@ -100,35 +108,36 @@ function component(width, height, color, x, y, type) {
     this.gamearea = myGameArea;
     this.type = type;
 
-    // Image as player 
-    if (type == "image") {
+    if (type == "image") {          // Image as player 
         this.image = new Image();
         this.image.src = color;
     }
-
     this.width = width;
     this.height = height;
-
-    // speed indicators
-    this.speedX = 0;
+    this.speedX = 0;                // speed indicators
     this.speedY = 0;    
-
-    // gravity indicator 
-    this.gravity = 0.05;
+    this.gravity = 0.05;            // gravity indicator 
     this.gravitySpeed = 0;
 
     // controls x . y coordinates
     this.x = x;
     this.y = y;    
 
-     // handles drawing of component
-    this.update = function() {
+    this.update = function() {      // handles drawing of component
         ctx = myGameArea.context;
 
         // check if component is "image" type
-        if (type == "image") {
+         if (type == "image") {
             ctx.drawImage(this.image, this.x, this.y, this.width, this.height); 
-        } 
+        }  
+        // -------------------------------------- 
+        /* if (type == "image" || type == "background") {
+            ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+            if (type == "background") {
+                ctx.drawImage(this.image, this.x + this.width, this.y, this.width, this.height);
+            } */
+        // -------------------------------------- 
+
 
         // test if component is "text" type
         else if (this.type == "text") {
@@ -144,33 +153,31 @@ function component(width, height, color, x, y, type) {
     }
     // changes the component's position
     this.newPos = function() {
-        // gravity effects on the position components
-        this.gravitySpeed += this.gravity;
-        // updates for x postion 
-        this.x += this.speedX;
-        // gravity effects on the y coordinates 
-        this.y += this.speedY + this.gravitySpeed;   
-        // component to notify and detect when player hits the bottom 
-        this.hitBottom();  
+        this.gravitySpeed += this.gravity;              // gravity effects on the position components
+        this.x += this.speedX;                          // updates for x position 
+        this.y += this.speedY + this.gravitySpeed;      // gravity effects on the y coordinates 
+        // -------------------------------------- 
+        /* if (this.type == "background") {
+            if (this.x == -(this.width)) {
+                this.x = 0;
+            }
+        } */
+        // -------------------------------------- 
+        this.hitBottom();                               // component to notify and detect when player hits the bottom 
     }
 
     // function to detect when player lands on the bottom of the canvas 
     this.hitBottom = function() {
-        // variable to assign bottom of canvas 
-        var bottomScreen = myGameArea.canvas.height - this.height;
-        // if statement for detection
-        if (this.y > bottomScreen) {
-            // if the bottom(y) of player is equal to bottom of the screen
-            this.y = bottomScreen;
-            // then stop player from moving (gravity = 0)
-            this.gravitySpeed = 0;
+        var bottomScreen = myGameArea.canvas.height - this.height;  // variable to assign bottom of canvas 
+        if (this.y > bottomScreen) {                                // if statement for detection
+            this.y = bottomScreen;                                  // if the bottom(y) of player is equal to bottom of the screen
+            this.gravitySpeed = 0;                                  // then stop player from moving (gravity = 0)
         }
     }
 
     function accelerate(n) {
         myGamePiece.gravity = n;
     }
-
 
     this.crashWith = function(otherobj) {
         var myleft = this.x;
@@ -202,9 +209,11 @@ function updateGameArea() {
         }
     }
     myGameArea.clear();
+    // -------------------------------------- 
+    //myBackground.speedX = -1;
+    // -------------------------------------- 
 
-    // count the score with frameNo
-    myGameArea.frameNo += 1;
+    myGameArea.frameNo += 1;                           // count the score with frameNo
 
     // send in obstacles of random sizes (need to work on this)
     if (myGameArea.frameNo == 1 || everyinterval(150)) {
@@ -216,7 +225,6 @@ function updateGameArea() {
         maxGap = 200;
         gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
 
-        // styling the obstacles
         myObstacles.push(new component(100, height, "#383bbd", x, 0));
         myObstacles.push(new component(100, x - height - gap, "#383bbd", x, height + gap));
     }
@@ -226,41 +234,41 @@ function updateGameArea() {
     }
 
     // move player when arrow keys are pressed
-    // left arrow key
-    if (myGameArea.keys && myGameArea.keys[37]) {
+    if (myGameArea.keys && myGameArea.keys[37]) {       // left arrow key
         myGamePiece.speedX = -3; 
     }
-    // right arrow key
-    if (myGameArea.keys && myGameArea.keys[39]) {
+    if (myGameArea.keys && myGameArea.keys[39]) {       // right arrow key
         myGamePiece.speedX = 3; 
     }
-    // top arrow key
-    if (myGameArea.keys && myGameArea.keys[38]) {
+    if (myGameArea.keys && myGameArea.keys[38]) {       // top arrow key
         myGamePiece.speedY = -3; 
     }
-    // bottom arrow key
-    if (myGameArea.keys && myGameArea.keys[40]) {
+    if (myGameArea.keys && myGameArea.keys[40]) {       // bottom arrow key
         myGamePiece.speedY = 3;
     }
-
-    // update score
-    myScore.text = "SCORE: " + myGameArea.frameNo;
-    myScore.update();
-
-    // update player position
-    myGamePiece.newPos();
+    myGamePiece.newPos();                               // update player position
     myGamePiece.update();
+    myScore.text = "DINO-SCORE: " + myGameArea.frameNo; // update score
+    myScore.update();
+    // -------------------------------------- 
+    // update background ==> this code makes the player .png disappear
+    //myBackground.newPos();
+    //myBackground.update(); 
+    // -------------------------------------- 
 }
 
 </script>
 
 <!-- title and instructions-->
-<h1>Don't get extinct</h1>
-<h3>&#10092; Your Mission &#10093;</h3>
-<p>Meteors are falling! Help your dinosaur avoid extinction by avoiding the falling meteors.</p>
-<h3>&#10092; Controls &#10093;</h3>
-<p>Left and right arrow keys to move. </p>
-<footer>&copy; 2020 a Javascript Game by <a href="http://mbui.bcitwebdeveloper.ca/">Mina Bui</a> and <a href="http://vnguyen.bcitwebdeveloper.ca/">Vinson Nguyen</a>. </footer>
+<h1>Dino Dash</h1>
+
+<h3>&#x2039; Your Mission &#x203A;</h3>
+<p>Just another day in the Mesozoic era... <br> Help your buddy cross the forest (and maybe avoid extinction) by avoiding obstacles.</p>
+
+<h3>&#x2039; Controls &#x203A;</h3>
+<p>&#8592; &#8595; &#8594; keys to move and &#8593; to jump.</p>
+
+<footer>&copy; 2020 - Present. A Javascript Game by <a href="http://mbui.bcitwebdeveloper.ca/">Mina Bui</a> and <a href="http://vnguyen.bcitwebdeveloper.ca/">Vinson Nguyen</a>. </footer>
 
 </body>
 </html>
