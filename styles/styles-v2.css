@@ -155,7 +155,8 @@ a:hover {
 }
 
 .funButtonsDiv {
-    padding-left: 100px;
+    text-align: right;
+    padding-right: 100px;
 }
 .darkModeButton {
     background-color: transparent; 
@@ -201,12 +202,12 @@ a:hover {
 @-webkit-keyframes partyTime {  
     0% { background-color: #383bbd; }
     50% { background-color: #bd38bd; }
-    51% { background-color: #38bd38; }
+    75% { background-color: #38bd38; }
     100% { background-color: #38bdbb; }
   }
 #theBody.party-theme {
     background-color: black;
     -webkit-animation-name: partyTime;  
     -webkit-animation-iteration-count: infinite;  
-    -webkit-animation-duration: 1s; 
+    -webkit-animation-duration: 2s; 
 }
