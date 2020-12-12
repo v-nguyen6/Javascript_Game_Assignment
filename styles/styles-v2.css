@@ -135,7 +135,7 @@ PART 2: GAME START AND GAME OVER SCREENS */
     text-align: center;
     padding-top: 10px;
 }
-.startOverButton {
+.gameOverButton {
     background-color: #bd5938; 
     border: none;
     border-radius: 5px;
@@ -154,7 +154,7 @@ PART 2: GAME START AND GAME OVER SCREENS */
     bottom: 0;
     border: 2px solid white;
 }
-.startOverButton:hover {
+.gameOverButton:hover {
     background-color: #bd9c38;
     color: white;
 }
