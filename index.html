@@ -117,11 +117,11 @@ var myDino, myObstacle, myObstacles = [], myScore, myScoreBG, myBackground, obst
 
 // create the components - game area, player, score, music, obstacles...
 function startGame() {
-    myDino = new component(60, 40, "images/dinosaur_1_green_final.png", 50, 350, "image"); 
+    myDino = new component(60, 40, "/javascript_game_assignment/images/dinosaur_1_green_final.png", 50, 350, "image"); 
     myScore = new component("30px", "VT323", "white", 30, 50, "text");
     myScoreBG = new component(210, 28, "#282830", 25, 28);
-    myObstacle = new component(50, 50, "images/obstacle.png", 300, 120, "image"); 
-    myBackground = new component(756, 445, "images/tree_background-1.png", 0, 0, "background");
+    myObstacle = new component(50, 50, "/javascript_game_assignment/images/obstacle.png", 300, 120, "image"); 
+    myBackground = new component(756, 445, "/javascript_game_assignment/images/tree_background-1.png", 0, 0, "background");
     myGameArea.start();
 }
 
@@ -311,7 +311,7 @@ function updateGameArea() {
             minGap = 270;
             maxGap = 330;
             gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
-            myObstacles.push(new component(100, height, "/images/obstacle.png", x, height + gap, "image"));
+            myObstacles.push(new component(100, height, "/javascript_game_assignment/images/obstacle.png", x, height + gap, "image"));
     }
 
     for (i = 0; i < myObstacles.length; i += 1) {
