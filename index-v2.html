@@ -121,13 +121,13 @@ var myObstacles = [];
 var myScore;
 var myScoreBG;
 var myBackground;
-var obstacleSpeedX = 6;
+var obstacleSpeedX = 3;
 
 // create the components - game area, player, score, music, obstacles...
 function startGame() {
     myGamePiece = new component(60, 40, "/images/dinosaur_1_green_final.png", 50, 350, "image"); 
     myScore = new component("30px", "VT323", "white", 30, 50, "text");
-    myScoreBG = new component(240, 28, "#282830", 25, 28);
+    myScoreBG = new component(210, 28, "#282830", 25, 28);
     myObstacle = new component(50, 50, "/images/obstacle2.png", 300, 120, "image"); 
     myBackground = new component(756, 445, "/images/tree_background-1.png", 0, 0, "background");
     myGameArea.start();
@@ -325,8 +325,8 @@ function updateGameArea() {
     for (i = 0; i < myObstacles.length; i += 1) {
         //myObstacles[i].x += -2;       // control speed of obstacles => SLOW MODE
          
-        if(everyinterval(500)){
-            obstacleSpeedX += 20;
+        if(everyinterval(300)){
+            obstacleSpeedX += 0.5;
         }
         myObstacles[i].x += -(obstacleSpeedX);
                 // control speed of obstacles => FAST MODE
