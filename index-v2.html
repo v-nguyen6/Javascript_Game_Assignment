@@ -55,7 +55,7 @@
 </div>
 <div id="gameOverMessage" class="gameOverMessage">
     <h3>Game Over :^(</h3>
-    <button id="startOverButton" class="startOverButton">Try Again?</button>
+    <button id="gameOverButton" class="gameOverButton">Try Again?</button>
 </div> 
 
 <!--=======================================================================================================-->
@@ -63,17 +63,16 @@
 <script>                                                               // made with the help of W3Schools :)
 // PART 1 - buttons!!!
 
-// close window when button is pressed
 const startButton = document.getElementById("startButton");
 const gameStartScreen = document.getElementById("game-start-screen");
-const startOverButton = document.getElementById("startOverButton");
+const gameOverButton = document.getElementById("gameOverButton");
 const gameOverMessage = document.getElementById("gameOverMessage");
 
 const theBody = document.getElementById("theBody");
+const settingsButton = document.getElementById("settingsButton");
 const darkModeButton = document.getElementById("darkModeButton");
 const partyModeButton = document.getElementById("partyModeButton");
 
-const settingsButton = document.getElementById("settingsButton");
 
 // when window loads, hide the "gameOverMessage" div.
 window.onload = function() {
@@ -87,7 +86,7 @@ startButton.addEventListener('click', function(){
 });
 
 // when user clicks "start over? :(", restart game
-startOverButton.addEventListener('click', function(){
+gameOverButton.addEventListener('click', function(){
     gameOverMessage.style.display = "none";
     window.location.reload();
 });
