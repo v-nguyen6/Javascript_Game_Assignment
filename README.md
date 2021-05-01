@@ -1,6 +1,6 @@
 # Dino Dash - Javascript Game
 
-![picture](/readme-shot.png)
+![picture](/readme-shot.jpg)
 
 Dino Dash is a small web-based game built with Javascript. The goal is to survive in the forest as long as you can while avoiding obstacles, using the arrow keys.
 
